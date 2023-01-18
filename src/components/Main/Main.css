@@ -1,0 +1,27 @@
+.main__description-container {
+  display: flex;
+}
+
+.main__description {
+  height: 25px;
+  width: 630px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #000;
+}
+
+.main__items {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-left: 0px;
+  width: 1360px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 323px);
+  justify-content: center;
+  column-gap: 17px;
+  row-gap: 20px;
+  padding-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}

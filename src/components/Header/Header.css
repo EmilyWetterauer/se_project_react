@@ -1,0 +1,77 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 40px;
+  width: 1360px;
+  align-items: center;
+  margin-top: 32px;
+  margin-bottom: 28px;
+}
+
+@media screen and (max-width: 650px) {
+  .header {
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header {
+    max-width: 350px;
+  }
+}
+
+.header__leftSideContainer {
+  display: flex;
+}
+
+.header__dateCity {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #000;
+  margin-left: 24px;
+  height: 24px;
+  width: 360px;
+}
+
+.header__logo {
+  height: 20px;
+  width: 89px;
+  margin-top: 18px;
+}
+
+.navigation__container {
+  display: flex;
+  align-items: center;
+}
+
+.navigation__button {
+  height: 24px;
+  width: 316px;
+  border: none;
+  background-color: transparent;
+  font-weight: 700;
+  font-size: 20px;
+  color: #000;
+  font-family: "Montserrat", sans-serif;
+  text-align: right;
+}
+
+.navigation__name {
+  font-family: "Montserrat", sans-serif;
+  height: 25px;
+  width: 157px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  text-align: right;
+  margin-right: 12px;
+}
+
+.header__avatar {
+  background-image: url("../../images/Ellipse\ 18\ copy.jpg");
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}

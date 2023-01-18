@@ -1,0 +1,28 @@
+.itemCard__container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 328px;
+  width: 328px;
+  border-radius: 20px;
+  align-items: center;
+}
+
+.itemCard__image {
+  height: 328px;
+  width: 328px;
+  border-radius: 20px;
+}
+
+.itemCard__title {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 23px;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 0px;
+  background-color: #fff;
+}

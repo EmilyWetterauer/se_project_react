@@ -1,0 +1,24 @@
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  width: 1360px;
+  margin-top: 171px;
+}
+
+.footer__name {
+  height: 20px;
+  width: 300px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+
+.footer__date {
+  height: 20px;
+  width: 38px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}

@@ -1,0 +1,24 @@
+.weatherBackgroundImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url(../../images/daySnow.jpg);
+  width: 1360px;
+  height: 80px;
+  border-radius: 12px;
+}
+
+.weatherTemperature {
+  padding-left: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+
+  color: #fff;
+}
+
+@media screen and (max-width: 650px) {
+  .weatherTemperature {
+    font-size: 24px;
+  }
+}
