@@ -17,10 +17,10 @@ import { apiKey } from "../../utils/constants";
 // import { React } from "globalthis/implementation";
 
 const App = () => {
-  const [weatherData, setWeatherData] = React.useState({});
-  const [clothingItems, setClothingItems] = React.useState([]);
-  const [activeModal, setActiveModal] = useState();
-  const [selectedCard, setSelectedCard] = React.useState(null);
+  const [weatherData, setWeatherData] = useState({});
+  const [clothingItems, setClothingItems] = useState([]);
+  const [activeModal, setActiveModal] = useState("");
+  const [selectedCard, setSelectedCard] = useState(null);
   const [clicked, setClicked] = useState(false);
 
   const handleCardClick = (evt) => {
@@ -33,8 +33,13 @@ const App = () => {
     setActiveModal("create");
   };
 
-  const closeAllModals = () => {
-    setActiveModal();
+  const closeAllModals = (evt) => {
+    if (
+      evt.key === "Escape" ||
+      (evt.target === evt.currentTarget && evt.type === "click")
+    ) {
+      return setActiveModal("");
+    }
   };
 
   const weatherType = (actualWeather) => {
@@ -86,7 +91,7 @@ const App = () => {
                 <ItemCard
                   name={item.name}
                   link={item.link}
-                  key={index}
+                  key={item._id}
                   onCardClick={handleCardClick}
                 />
               );
@@ -115,7 +120,6 @@ const App = () => {
             />
             <span className="modal-error" id="clothing-name-error"></span>
           </label>
-
           <label htmlFor="clothing-link" className="ModalWithForm-heading">
             Image
             <input
@@ -128,7 +132,6 @@ const App = () => {
             />
             <span className="modal__error" id="clothing-link-error"></span>
           </label>
-
           <p className="modalWithForm__subTitle">Select the weather type:</p>
           <div className="modal__input modal__input_type_radio">
             <div>
