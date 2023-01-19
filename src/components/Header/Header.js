@@ -41,7 +41,7 @@ const Header = ({ weatherData, onButtonClick }) => {
             {/* </span> */}
             {/* )} */}
           </div>
-          <img className="header__avatar"></img>
+          <img className="header__avatar" alt="avatar"></img>
         </div>
       </nav>
       {/* </div> */}

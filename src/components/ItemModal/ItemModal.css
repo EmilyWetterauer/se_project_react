@@ -21,11 +21,12 @@
 
 .itemModal__closeButton {
   background-image: url(../../images/closeButtonImage.png);
+  background-position: center;
   position: absolute;
   top: 27px;
   right: 27px;
-  height: 44px;
-  width: 44px;
+  height: 14px;
+  width: 14px;
   z-index: 4;
 }
 
