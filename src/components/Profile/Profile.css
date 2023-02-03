@@ -1,0 +1,11 @@
+.profile__container {
+  display: flex;
+  width: 1440px;
+  margin-right: 0px;
+}
+
+.profile__clothesItemsContainer {
+  margin-left: -100px;
+  width: 1000px;
+  flex-wrap: wrap;
+}

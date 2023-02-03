@@ -48,20 +48,22 @@
 
 .navigation__button {
   height: 24px;
-  width: 316px;
+  width: 138px;
   border: none;
   background-color: transparent;
   font-weight: 700;
   font-size: 20px;
   color: #000;
   font-family: "Montserrat", sans-serif;
+  padding: 0px;
   text-align: right;
+  margin-left: 20px;
 }
 
 .navigation__name {
   font-family: "Montserrat", sans-serif;
   height: 25px;
-  width: 157px;
+  width: 187px;
   font-size: 20px;
   font-weight: 700;
   color: #000;
@@ -70,8 +72,12 @@
 }
 
 .header__avatar {
-  background-image: url("../../images/Ellipse\ 18\ copy.jpg");
+  background-image: url("../../images/Ellipse.jpg");
   height: 40px;
   width: 40px;
   border-radius: 50%;
+}
+
+.header__profileLink {
+  text-decoration: none;
 }

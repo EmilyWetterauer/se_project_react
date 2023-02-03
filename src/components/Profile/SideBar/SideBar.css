@@ -1,0 +1,23 @@
+.sideBar__container {
+  display: flex;
+  width: 300px;
+  margin-right: 0;
+  margin-left: 40px;
+}
+
+.sideBar__avatar {
+  background-image: url("../../../images/Ellipse.jpg");
+  height: 40px;
+  width: 40px;
+  align-self: center;
+  border-radius: 50%;
+}
+
+.sideBar__name {
+  align-self: center;
+  font-size: 20px;
+  font-weight: 700px;
+  color: #000;
+  margin-top: 20px;
+  margin-left: 16px;
+}

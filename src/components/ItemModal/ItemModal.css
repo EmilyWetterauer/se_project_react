@@ -52,3 +52,13 @@
   border-top-right-radius: 16px;
   width: 498px;
 }
+
+.itemModal__deleteButton {
+  color: #ff4d00;
+  font-size: 20px;
+  font-weight: 700;
+  width: 101px;
+  height: 24px;
+  z-index: 4;
+  font-family: "Montserrat", sans-serif;
+}

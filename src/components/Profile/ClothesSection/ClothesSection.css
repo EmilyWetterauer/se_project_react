@@ -1,0 +1,26 @@
+.clothesSection__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.clothesSectionTitle__container {
+  display: flex;
+  flex-direction: row;
+  width: 328px;
+  align-items: center;
+}
+.clothesSection__title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: none;
+}
+
+.clothesSection__addButton {
+  color: rgba(0, 0, 0, 0.6);
+  width: 125px;
+  height: 25px;
+  border: none;
+  background-color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
