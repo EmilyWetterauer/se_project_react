@@ -12,6 +12,7 @@
 }
 
 .itemModal__container {
+  display: flex;
   position: relative;
   height: 610px;
   width: 498px;
@@ -54,10 +55,15 @@
 }
 
 .itemModal__deleteButton {
+  position: absolute;
+  right: 32px;
+  bottom: 68px;
   color: #ff4d00;
+  border: none;
+  background-color: #fff;
   font-size: 20px;
   font-weight: 700;
-  width: 101px;
+  width: 125px;
   height: 24px;
   z-index: 4;
   font-family: "Montserrat", sans-serif;

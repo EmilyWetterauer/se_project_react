@@ -14,10 +14,22 @@ function ItemModal({ card, onClose, onCardDelete }) {
   return (
     <div className="itemModal__wrapper" onClick={onClose}>
       <div className="itemModal__container">
-        <div className="itemModal__closeButton" onClick={onClose}></div>
-        <h2 className="itemModal__title">{card.name}</h2>
-        <img className="itemModal__image" src={card.src} alt="clothing image" />
-        <button className="itemModal__deleteButton" onClick={onCardDelete}>
+        <div className="itemModal__container">
+          <div className="itemModal__closeButton" onClick={onClose}></div>
+          <h2 className="itemModal__title">{card.name}</h2>
+          <img
+            className="itemModal__image"
+            id={card.id}
+            src={card.src}
+            alt="clothing image"
+          />
+        </div>
+        <button
+          className="itemModal__deleteButton"
+          onClick={() => {
+            onCardDelete(card);
+          }}
+        >
           Delete Item
         </button>
       </div>

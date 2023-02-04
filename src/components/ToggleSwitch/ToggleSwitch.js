@@ -12,7 +12,6 @@ const ToggleSwitch = ({}) => {
   useEffect(() => setChecked(currentTemperatureUnit === "C"), [
     currentTemperatureUnit,
   ]);
-  console.log("checked value", checked);
 
   const handleChange = () => {
     setChecked(!checked);

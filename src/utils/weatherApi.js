@@ -18,7 +18,7 @@ const getForecastWeather = (location, apiKey) => {
 };
 
 const filterDataFromWeatherAPI = (data) => {
-  console.log("data", data);
+  // console.log("data", data);
   if (!data) {
     return null;
   }

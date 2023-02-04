@@ -5,7 +5,7 @@ import shortsPath from "../../images/shorts.jpg";
 import capPath from "../../images/cap.jpg";
 import sneakersPath from "../../images/sneakers.jpg";
 
-function ItemCard({ name, imageUrl, onCardClick }) {
+function ItemCard({ name, imageUrl, id, onCardClick }) {
   return (
     <div className="itemCards__container">
       <div className="itemCard__container" onClick={onCardClick}>
@@ -15,6 +15,7 @@ function ItemCard({ name, imageUrl, onCardClick }) {
         <img
           className="itemCard__image"
           name={name}
+          id={id}
           src={imageUrl}
           alt={name}
         />

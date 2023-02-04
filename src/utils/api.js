@@ -1,7 +1,7 @@
 import { apiKey } from "./constants";
 
-export const baseUrl = "http://localhost:3001";
-
+export const baseUrl =
+  "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react";
 export const handleServerResponse = (res) => {
   const resp = res.json();
 
@@ -13,11 +13,7 @@ export const getItemList = () => {
     headers: {
       "Content-Type": "application/json",
     },
-  })
-    .then(handleServerResponse)
-    .catch((error) => {
-      console.error(error);
-    });
+  }).then(handleServerResponse);
 };
 
 export const addItem = ({ id, name, weather, imageUrl }) => {
@@ -33,20 +29,13 @@ export const addItem = ({ id, name, weather, imageUrl }) => {
       imageUrl,
     }),
   }).then(handleServerResponse);
-  // .catch((error) => {
-  //   console.error(error);
-  // });
 };
 
 export const removeItem = (id) => {
-  return fetch(`${baseUrl}/items${id}`, {
+  return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
-      "Content-Type": "application/json",
+      "content-type": "application/json",
     },
-  })
-    .then(handleServerResponse)
-    .catch((error) => {
-      console.error(error);
-    });
+  }).then(handleServerResponse);
 };

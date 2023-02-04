@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import CommandPalette from "react-command-palette";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
@@ -20,10 +21,10 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import { addItem, removeItem } from "../../utils/api.js";
+import { getItemList, addItem, removeItem } from "../../utils/api.js";
 // import { React } from "globalthis/implementation";
 
-const uuid = require("uuid/v4");
+// const uuid = require("uuid/v4");
 
 const App = () => {
   const [weatherData, setWeatherData] = useState({});
@@ -33,6 +34,14 @@ const App = () => {
   const [clicked, setClicked] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    getItemList()
+      .then((items) => {
+        setClothingItems(items);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   const handleCardClick = (evt) => {
     setSelectedCard(evt.target);
@@ -57,24 +66,35 @@ const App = () => {
     }
   };
 
-  const handleRemoveItem = (card) => {
+  const onAddItem = (name, imageUrl, weather) => {
     setIsOpen(true);
-    removeItem(card.id).then((res) => {
-      if (res) {
-        setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
-        closeAllModals();
-      }
-      // setIsOpen(false);
-    });
+    // const id = uuid();
+    const id = clothingItems.length;
+
+    addItem({ id, name, weather, imageUrl })
+      .then((res) => {
+        handleAddItemSubmit(res);
+        setActiveModal("");
+        setIsOpen(false);
+      })
+      .catch((err) => console.log(err));
   };
 
-  const onAddItem = (name, imageUrl, weather) => {
-    const id = uuid();
-
-    addItem({ id, name, weather, imageUrl }).then((res) => {
-      handleAddItemSubmit(res);
-      setActiveModal("");
-    });
+  const handleRemoveItem = (card) => {
+    setIsOpen(true);
+    removeItem(card.id)
+      .then((res) => {
+        if (res) {
+          setClothingItems((cards) =>
+            cards.filter((c) => {
+              return c.id + "" !== card.id;
+            })
+          );
+          setActiveModal("");
+        }
+        // setIsOpen(false);
+      })
+      .catch((err) => console.log(err));
   };
 
   const handleToggleSwitchChange = () => {
@@ -85,7 +105,6 @@ const App = () => {
 
   const weatherType = (actualWeather) => {
     let actualWeatherNumber = Number(actualWeather.slice(0, -2));
-    console.log("new str", actualWeatherNumber);
     if (actualWeatherNumber >= 86) {
       return "hot";
     } else if (actualWeatherNumber >= 66 && actualWeatherNumber <= 85) {
@@ -112,6 +131,7 @@ const App = () => {
   React.useEffect(() => {
     setClothingItems(defaultClothingItems);
   }, []);
+
   return (
     <div className="page">
       <CurrentTemperatureUnitContext.Provider
@@ -141,7 +161,8 @@ const App = () => {
                       <ItemCard
                         name={item.name}
                         imageUrl={item.imageUrl}
-                        key={item._id}
+                        key={item.id}
+                        id={item.id}
                         onCardClick={handleCardClick}
                       />
                     );
