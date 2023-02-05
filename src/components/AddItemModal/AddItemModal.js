@@ -1,30 +1,18 @@
 import React, { useState } from "react";
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useForm } from "../../utils/customHooks";
 
 const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
-  const [name, setName] = useState("");
-  const [link, setLink] = useState("");
-  const [weatherType, setWeatherType] = useState("");
-
-  function handleNameOnChange(evt) {
-    setName(evt.target.value);
-  }
-
-  function handleLinkOnChange(evt) {
-    setLink(evt.target.value);
-  }
-
-  function handleWeatherTypeOnChange(evt) {
-    setWeatherType(evt.target.value);
-  }
+  const { values, handleChange, setValues } = useForm({
+    name: "",
+    image: "",
+    weatherType: "",
+  });
 
   function handleSubmit(evt) {
-    // prevent default behavior
     evt.preventDefault();
-
-    // call onAddItem with appropriate arguments
-    onAddItem(name, link, weatherType);
+    onAddItem(values.name, values.image, values.weatherType);
   }
 
   return (
@@ -38,6 +26,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
         Name
         <input
           type="text"
+          value={values.name}
           name="name"
           id="clothing-name"
           className="ModalWithForm-input modal__input_type_card-name"
@@ -45,7 +34,7 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
           required
           minLength="1"
           maxLength="30"
-          onChange={handleNameOnChange}
+          onChange={handleChange}
         />
         <span className="modal-error" id="clothing-name-error"></span>
       </label>
@@ -53,12 +42,13 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
         Image
         <input
           type="url"
-          name="link"
+          value={values.image}
+          name="image"
           id="clothing-link"
           className="ModalWithForm-input modal__input_type_url"
           placeholder="Image URL"
           required
-          onChange={handleLinkOnChange}
+          onChange={handleChange}
         />
         <span className="modal__error" id="clothing-link-error"></span>
       </label>
@@ -67,10 +57,11 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
         <div>
           <input
             type="radio"
+            checked={values.weatherType === "hot"}
             id="choiceHot"
             name="weatherType"
             value="hot"
-            onChange={handleWeatherTypeOnChange}
+            onChange={handleChange}
           />
           <label className="modal__label_radio" htmlFor="choiceHot">
             Hot
@@ -79,10 +70,11 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
         <div>
           <input
             type="radio"
+            checked={values.weatherType === "warm"}
             id="choiceWarm"
             name="weatherType"
             value="warm"
-            onChange={handleWeatherTypeOnChange}
+            onChange={handleChange}
           />
           <label className="modal__label_radio" htmlFor="choiceWarm">
             Warm
@@ -91,10 +83,11 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
         <div>
           <input
             type="radio"
+            checked={values.weatherType === "cold"}
             id="choiceCold"
             name="weatherType"
             value="cold"
-            onChange={handleWeatherTypeOnChange}
+            onChange={handleChange}
           />
           <label className="modal__label_radio" htmlFor="choiceCold">
             Cold

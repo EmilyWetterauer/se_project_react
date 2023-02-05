@@ -1,6 +1,5 @@
 import React from "react";
 import "./ItemModal.css";
-// import closeButtonImagePath from "../../images/closeButtonImage.png";
 
 function ItemModal({ card, onClose, onCardDelete }) {
   React.useEffect(() => {

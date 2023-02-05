@@ -22,9 +22,7 @@ import { Link } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import { getItemList, addItem, removeItem } from "../../utils/api.js";
-// import { React } from "globalthis/implementation";
-
-// const uuid = require("uuid/v4");
+import { useForm } from "../../utils/customHooks";
 
 const App = () => {
   const [weatherData, setWeatherData] = useState({});
@@ -68,7 +66,6 @@ const App = () => {
 
   const onAddItem = (name, imageUrl, weather) => {
     setIsOpen(true);
-    // const id = uuid();
     const id = clothingItems.length;
 
     addItem({ id, name, weather, imageUrl })
@@ -92,7 +89,6 @@ const App = () => {
           );
           setActiveModal("");
         }
-        // setIsOpen(false);
       })
       .catch((err) => console.log(err));
   };
@@ -193,7 +189,8 @@ const App = () => {
                       <ItemCard
                         name={item.name}
                         imageUrl={item.imageUrl}
-                        key={item._id}
+                        key={item.id}
+                        id={item.id}
                         onCardClick={handleCardClick}
                       />
                     );
