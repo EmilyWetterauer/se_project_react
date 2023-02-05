@@ -1,7 +1,7 @@
 import React from "react";
 import "./ItemModal.css";
 
-function ItemModal({ card, onClose, onCardDelete }) {
+function ItemModal({ card, onClose, onCardDelete, id }) {
   React.useEffect(() => {
     document.addEventListener("keydown", onClose);
 
@@ -18,6 +18,7 @@ function ItemModal({ card, onClose, onCardDelete }) {
           <h2 className="itemModal__title">{card.name}</h2>
           <img
             className="itemModal__image"
+            key={id}
             id={card.id}
             src={card.src}
             alt="clothing image"

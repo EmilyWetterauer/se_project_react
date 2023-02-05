@@ -157,7 +157,7 @@ const App = () => {
                       <ItemCard
                         name={item.name}
                         imageUrl={item.imageUrl}
-                        key={item.id}
+                        key={index}
                         id={item.id}
                         onCardClick={handleCardClick}
                       />
@@ -189,7 +189,7 @@ const App = () => {
                       <ItemCard
                         name={item.name}
                         imageUrl={item.imageUrl}
-                        key={item.id}
+                        key={index}
                         id={item.id}
                         onCardClick={handleCardClick}
                       />
