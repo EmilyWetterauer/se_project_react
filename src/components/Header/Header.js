@@ -5,14 +5,19 @@ import avatarDefault from "../../images/Ellipse.jpg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
-const Header = ({ weatherData, onButtonClick }) => {
+const Header = ({
+  weatherData,
+  onButtonClick,
+  handleRegisterClick,
+  handleLoginClick,
+}) => {
   if (!weatherData) return null;
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
-  const name = "Emma Wetterauer";
-  const avatar = "";
+  const signUp = "Sign Up";
+  const signIn = "Sign In";
   return (
     <header className="header">
       {/* <div className="header__container"> */}
@@ -31,11 +36,17 @@ const Header = ({ weatherData, onButtonClick }) => {
         <button onClick={onButtonClick} className="navigation__button">
           + Add Clothes
         </button>
-
-        <Link className="header__profileLink" to="/profile">
-          <div className="navigation__name">{name}</div>
+        <div onClick={handleRegisterClick} className="navigation__signUp">
+          Sign Up
+        </div>
+        <div onClick={handleLoginClick} className="navigation__signIn">
+          Sign In
+        </div>
+        {/* <Link className="header__profileLink" to="/profile">
+          <div className="navigation__signUp">{signUp}</div>
         </Link>
-        <img className="header__avatar" alt="avatar"></img>
+        <div className="navigation__signIn">{signIn}</div> */}
+        {/* <img className="header__avatar" alt="avatar"></img> */}
         {/* </div> */}
       </nav>
     </header>

@@ -1,5 +1,7 @@
 import { apiKey } from "./constants";
 
+const token = localStorage.getItem("jwt");
+
 export const baseUrl =
   "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react";
 export const handleServerResponse = (res) => {
@@ -21,6 +23,7 @@ export const addItem = ({ id, name, weather, imageUrl }) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       id,
@@ -36,6 +39,7 @@ export const removeItem = (id) => {
     method: "DELETE",
     headers: {
       "content-type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   }).then(handleServerResponse);
 };
