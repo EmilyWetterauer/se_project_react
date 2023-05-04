@@ -1,11 +1,7 @@
 import React from "react";
 import SideBar from "./SideBar/SideBar";
 import ClothesSection from "./ClothesSection/ClothesSection";
-// import "../Profile.css";
 
-// const Profile = () => {};
-
-// import React, {  } from "react";
 import "./Profile.css";
 // import { filterDataFromWeatherAPI } from "../../utils/weatherApi";
 // import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
@@ -18,11 +14,18 @@ const Profile = ({
   children,
   onCardDelete,
   onButtonClick,
+  handleEditProfileClick,
+  handleInputChange,
+  previousValue,
 }) => {
+  console.log("profile");
   return (
     <div className="profile__container">
       <section>
-        <SideBar></SideBar>
+        <SideBar
+          handleEditProfileClick={handleEditProfileClick}
+          // handleInputChange={handleInputChange}
+        ></SideBar>
       </section>
       <ClothesSection
         className="profile__addClothesContainer"

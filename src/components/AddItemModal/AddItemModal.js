@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../utils/customHooks";
 
 const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
-  const { values, handleChange, setValues } = useForm({
+  const { values, handleChange } = useForm({
     name: "",
     image: "",
     weatherType: "",

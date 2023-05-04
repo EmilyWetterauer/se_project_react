@@ -1,4 +1,4 @@
-import { baseUrl } from "../utils/api";
+// import { baseUrl } from "../utils/api";
 
 export const register = ({ email, password, name, avatar }) => {
   return fetch("http://localhost:3001/signup", {
@@ -32,6 +32,7 @@ export const authorize = ({ email, password }) => {
       // console.log("data.token", data.token);
       if (data.token) {
         localStorage.setItem("jwt", data.token);
+        // setCurrentUser({ name: data.response.name });
         return data.token;
       }
     })
@@ -56,7 +57,7 @@ export const checkToken = (token) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      return data;
       console.log("data in checkToken", data);
+      return data;
     });
 };

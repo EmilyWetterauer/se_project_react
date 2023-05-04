@@ -1,14 +1,20 @@
 import React from "react";
 import "./SideBar.css";
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { useHistory } from "react-router-dom";
 
-const SideBar = () => {
-  const history = useHistory();
+import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const SideBar = ({
+  handleEditProfileClick,
+  handleInputChange,
+  previousValue,
+}) => {
+  const { currentUser, setIsLoggedIn } = useContext(CurrentUserContext);
+  const { name, avatarUrl } = currentUser;
+  const history = useHistory();
 
   const handleLogOut = () => {
     localStorage.removeItem("jwt");
@@ -18,10 +24,15 @@ const SideBar = () => {
 
   return (
     <div className="sideBar__container">
-      <img className="sideBar__avatar" alt="avatar"></img>
-      <p className="sideBar__name">Emma Wetterauer</p>
+      <img className="sideBar__avatar" alt="avatar">
+        {avatarUrl}
+      </img>
+      <p className="sideBar__name">{name}</p>
       <div>
-        <button className="sideBar__changeProfileDataButton">
+        <button
+          className="sideBar__changeProfileDataButton"
+          onClick={handleEditProfileClick}
+        >
           Change profile data
         </button>
         <button className="sideBar__logoutButton" onClick={handleLogOut}>

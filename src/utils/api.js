@@ -1,9 +1,11 @@
-import { apiKey } from "./constants";
+// import { apiKey } from "./constants";
 
 const token = localStorage.getItem("jwt");
 
 export const baseUrl =
+  // "http://localhost:3001";
   "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react";
+
 export const handleServerResponse = (res) => {
   const resp = res.json();
 
@@ -18,7 +20,8 @@ export const getItemList = () => {
   }).then(handleServerResponse);
 };
 
-export const addItem = ({ id, name, weather, imageUrl }) => {
+export const addItem = ({ id, name, weather, imageUrl, ownerId }) => {
+  console.log("owner inside additem fetch", ownerId);
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -30,6 +33,7 @@ export const addItem = ({ id, name, weather, imageUrl }) => {
       name,
       weather,
       imageUrl,
+      ownerId,
     }),
   }).then(handleServerResponse);
 };
@@ -43,3 +47,19 @@ export const removeItem = (id) => {
     },
   }).then(handleServerResponse);
 };
+
+// export const updateUserProfile = async ({ name, avatarUrl }) => {
+//   const response = await fetch(`${baseUrl}/items/me`, {
+//     method: "PATCH",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify({ name, avatarUrl }),
+//   }).then(handleServerResponse);
+
+// if (!response.ok) {
+//   const errorMessage = `Failed to update profile data: ${response.statusText}`;
+//   throw new Error(errorMessage);
+// }
+
+// const updatedUserData = await response.json();
+// return updatedUserData;
+// };

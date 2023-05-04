@@ -1,15 +1,12 @@
-//this is the component for user authorization with the necessary state variables.
 import React, { useState } from "react";
 
 import { useHistory } from "react-router-dom";
 
 import "./LoginModal.css";
 
-// import authorize from "../../../auth.js";
-
 import * as auth from "../../utils/auth";
 
-const LoginModal = ({ onClose, handleRegisterComplete }) => {
+const LoginModal = ({ onClose, handleRegisterComplete, handleCheckToken }) => {
   const history = useHistory();
   const [values, setValues] = useState({
     email: "",
@@ -22,7 +19,6 @@ const LoginModal = ({ onClose, handleRegisterComplete }) => {
       ...values,
       [name]: value,
     });
-    // console.log("values in login", values);
   };
 
   const handleSubmit = (event) => {
@@ -31,12 +27,10 @@ const LoginModal = ({ onClose, handleRegisterComplete }) => {
       .authorize(values)
       .then((res) => {
         if (res) {
+          console.log("res in handleSubmit", res);
           handleRegisterComplete();
           history.push("/Profile");
-          // localStorage.setItem("accessToken", res.accessToken);
-          // Redirect to a protected page
         } else {
-          // Handle invalid credentials
         }
       })
       .catch((err) => console.log(err));
@@ -74,7 +68,11 @@ const LoginModal = ({ onClose, handleRegisterComplete }) => {
             id="password"
           />
 
-          <button className="loginModal__loginButton" type="submit">
+          <button
+            className="loginModal__loginButton"
+            type="submit"
+            onClick={handleCheckToken}
+          >
             Login
           </button>
 
