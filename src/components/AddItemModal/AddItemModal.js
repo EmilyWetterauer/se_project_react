@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../utils/customHooks";
+// import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
+  console.log("is item being created here??");
   const { values, handleChange } = useForm({
     name: "",
     image: "",
     weatherType: "",
   });
 
+  // const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
+
   function handleSubmit(evt) {
     evt.preventDefault();
+    console.log("is it getting to submit button");
     onAddItem(values.name, values.image, values.weatherType);
   }
 

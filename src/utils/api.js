@@ -2,9 +2,8 @@
 
 const token = localStorage.getItem("jwt");
 
-export const baseUrl =
-  // "http://localhost:3001";
-  "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react";
+export const baseUrl = "http://localhost:3001";
+// "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react";
 
 export const handleServerResponse = (res) => {
   const resp = res.json();
@@ -22,7 +21,7 @@ export const getItemList = () => {
 
 export const addItem = ({ id, name, weather, imageUrl, ownerId }) => {
   console.log("owner inside additem fetch", ownerId);
-  return fetch(`${baseUrl}/items`, {
+  return fetch("http://localhost:3001/items", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -39,6 +38,8 @@ export const addItem = ({ id, name, weather, imageUrl, ownerId }) => {
 };
 
 export const removeItem = (id) => {
+  console.log("id inside removeItem", id);
+  console.log("remoooovvvvee");
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
@@ -47,6 +48,10 @@ export const removeItem = (id) => {
     },
   }).then(handleServerResponse);
 };
+
+export const addCardLike = () => {};
+
+export const removeCardLike = () => {};
 
 // export const updateUserProfile = async ({ name, avatarUrl }) => {
 //   const response = await fetch(`${baseUrl}/items/me`, {

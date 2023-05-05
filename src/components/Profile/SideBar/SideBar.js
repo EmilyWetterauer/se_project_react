@@ -14,6 +14,12 @@ const SideBar = ({
 }) => {
   const { currentUser, setIsLoggedIn } = useContext(CurrentUserContext);
   const { name, avatarUrl } = currentUser;
+  let avatarInitial = " ";
+
+  if (name) {
+    avatarInitial = name.charAt(0);
+  }
+
   const history = useHistory();
 
   const handleLogOut = () => {
@@ -24,11 +30,22 @@ const SideBar = ({
 
   return (
     <div className="sideBar__container">
-      <img className="sideBar__avatar" alt="avatar">
+      <div className="sideBar__avatarNameContainer">
+        <div /*className="header__avatar"*/ alt="avatar">
+          {avatarUrl ? (
+            <img className="header__avatar" alt="avatar">
+              {avatarUrl}
+            </img>
+          ) : (
+            <div className="sideBar__avatarInitial">{avatarInitial}</div>
+          )}
+        </div>
+        {/* <img className="sideBar__avatar" alt="avatar">
         {avatarUrl}
-      </img>
-      <p className="sideBar__name">{name}</p>
-      <div>
+      </img> */}
+        <p className="sideBar__name">{name}</p>
+      </div>
+      <div className="sideBar__buttonsContainer">
         <button
           className="sideBar__changeProfileDataButton"
           onClick={handleEditProfileClick}

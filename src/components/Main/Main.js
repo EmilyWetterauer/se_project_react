@@ -4,7 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import "./Main.css";
 
-function Main({ weatherData, cards, children, weatherType }) {
+function Main({ weatherData, cards, children, weatherType, onCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const actualWeather = weatherData.temperature
     ? weatherData.temperature[currentTemperatureUnit]

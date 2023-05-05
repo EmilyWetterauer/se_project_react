@@ -14,6 +14,12 @@
   border-radius: 20px;
 }
 
+.itemCard__titleButtonContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+}
+
 .itemCard__title {
   position: absolute;
   left: 50%;
@@ -25,4 +31,18 @@
   color: rgba(0, 0, 0, 0.6);
   margin-bottom: 0px;
   background-color: #fff;
+}
+
+.itemCard__likeButton {
+  position: absolute;
+  background-color: none;
+  background-image: url("../../images/heart.svg");
+  height: 19px;
+  width: 21px;
+  border: none;
+  /* z-index: 4; */
+}
+
+.itemCard__likeButtonClicked {
+  background-image: url("../../images/heartFilled.png");
 }

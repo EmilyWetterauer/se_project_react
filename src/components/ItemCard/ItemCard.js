@@ -5,12 +5,21 @@ import shortsPath from "../../images/shorts.jpg";
 import capPath from "../../images/cap.jpg";
 import sneakersPath from "../../images/sneakers.jpg";
 
-function ItemCard({ name, imageUrl, id, onCardClick }) {
+function ItemCard({ name, imageUrl, id, owner, onCardClick, onCardLike }) {
+  console.log("id in ItemCard", id);
+  const handleLikeClick = () => {
+    onCardLike();
+  };
   return (
     <div className="itemCards__container">
       <div className="itemCard__container" onClick={onCardClick}>
-        <div>
-          <h2 className="itemCard__title">{name}</h2>
+        <div className="itemCard__titleButtonContainer">
+          <div>
+            <h2 className="itemCard__title">{name}</h2>
+          </div>
+          <button
+            className="itemCard__likeButton" /*"itemCard__likeButtonClicked"*/
+          ></button>
         </div>
         <img
           className="itemCard__image"
@@ -18,6 +27,7 @@ function ItemCard({ name, imageUrl, id, onCardClick }) {
           id={id}
           src={imageUrl}
           alt={name}
+          data-ownerid={owner}
         />
       </div>
     </div>

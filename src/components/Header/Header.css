@@ -89,6 +89,16 @@
   border-radius: 50%;
 }
 
+.header__avatarInitial {
+  /* position: absolute; */
+  background-color: deeppink;
+  color: antiquewhite;
+  text-align: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
 .header__profileLink {
   text-decoration: none;
 }

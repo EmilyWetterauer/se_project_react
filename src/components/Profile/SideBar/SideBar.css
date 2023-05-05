@@ -1,8 +1,19 @@
 .sideBar__container {
   display: flex;
+  flex-direction: column;
   width: 300px;
   margin-right: 0;
   margin-left: 40px;
+}
+
+.sideBar__avatarNameContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.sideBar__buttonsContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 .sideBar__avatar {
@@ -10,6 +21,15 @@
   height: 40px;
   width: 40px;
   align-self: center;
+  border-radius: 50%;
+}
+
+.sideBar__avatarInitial {
+  background-color: deeppink;
+  color: antiquewhite;
+  text-align: center;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
 }
 
@@ -23,19 +43,25 @@
 }
 
 .sideBar__changeProfileDataButton {
+  border: none;
+  background-color: #fff;
   align-self: center;
   font-size: 20px;
   font-weight: 700px;
   color: #000;
   margin-top: 24px;
   margin-left: 16px;
+  text-align: left;
 }
 
 .sideBar__logoutButton {
+  border: none;
+  background-color: #fff;
   align-self: center;
   font-size: 20px;
   font-weight: 700px;
   color: #000;
   margin-top: 28px;
   margin-left: 16px;
+  text-align: left;
 }

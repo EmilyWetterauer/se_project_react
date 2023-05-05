@@ -42,6 +42,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 import * as auth from "../../utils/auth";
+import * as api from "../../utils/api";
 
 const App = () => {
   const history = useHistory();
@@ -116,6 +117,11 @@ const App = () => {
 
     addItem({ id, name, weather, imageUrl, ownerId: currentUser._id })
       .then((res) => {
+        getItemList()
+          .then((items) => {
+            setClothingItems(items);
+          })
+          .catch((err) => console.log(err));
         handleAddItemSubmit(res);
         setActiveModal("");
         setIsOpen(false);
@@ -124,10 +130,16 @@ const App = () => {
   };
 
   const handleRemoveItem = (card) => {
+    console.log("card inside handleRemoveItem", card);
     setIsOpen(true);
     removeItem(card.id)
       .then((res) => {
         if (res) {
+          getItemList()
+            .then((items) => {
+              setClothingItems(items);
+            })
+            .catch((err) => console.log(err));
           setClothingItems((cards) =>
             cards.filter((c) => {
               return c.id + "" !== card.id;
@@ -213,6 +225,30 @@ const App = () => {
   //     .catch((err) => console.log(err));
   // };
 
+  const handleLikeClick = ({ id, isLiked, user }) => {
+    const token = localStorage.getItem("jwt");
+    // Check if this card is now liked
+    isLiked
+      ? // if so, send a request to add the user's id to the card's likes array
+        api
+          .addCardLike({ id, user }, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err))
+      : // if not, send a request to remove the user's id from the card's likes array
+        api
+          .removeCardLike({ id, user }, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((c) => (c._id === id ? updatedCard : c))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
+
   return (
     <CurrentUserContext.Provider
       value={{
@@ -240,6 +276,7 @@ const App = () => {
                   cards={clothingItems}
                   onCardClick={handleCardClick}
                   weatherType={weatherType}
+                  onCardLike={handleLikeClick}
                 >
                   {clothingItems
 
@@ -252,13 +289,16 @@ const App = () => {
                       }
                     })
                     .map((item, index) => {
+                      console.log("itemMap", item);
                       return (
                         <ItemCard
                           name={item.name}
                           imageUrl={item.imageUrl}
                           key={index}
-                          id={item.id}
+                          id={item._id}
                           onCardClick={handleCardClick}
+                          onCardLike={handleLikeClick}
+                          owner={item.owner}
                         />
                       );
                     })}
@@ -291,8 +331,9 @@ const App = () => {
                           name={item.name}
                           imageUrl={item.imageUrl}
                           key={index}
-                          id={item.id}
+                          id={item._id}
                           onCardClick={handleCardClick}
+                          owner={item.owner}
                         />
                       );
                     })}

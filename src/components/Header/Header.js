@@ -15,6 +15,11 @@ const Header = ({
 }) => {
   const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
   const { name, avatarUrl } = currentUser;
+  let avatarInitial = " ";
+
+  if (name) {
+    avatarInitial = name.charAt(0);
+  }
 
   useEffect(() => {
     console.log("currentUser inside of Header", currentUser);
@@ -47,10 +52,19 @@ const Header = ({
           </button>
 
           <div>{name}</div>
+          <div /*className="header__avatar"*/ alt="avatar">
+            {avatarUrl ? (
+              <img className="header__avatar" alt="avatar">
+                {avatarUrl}
+              </img>
+            ) : (
+              <div className="header__avatarInitial">{avatarInitial}</div>
+            )}
+          </div>
 
-          <img className="header__avatar" alt="avatar">
+          {/* <img className="header__avatar" alt="avatar">
             {avatarUrl}
-          </img>
+          </img> */}
         </nav>
       </header>
     );
