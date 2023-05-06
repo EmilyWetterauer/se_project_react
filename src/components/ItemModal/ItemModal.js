@@ -9,10 +9,10 @@ function ItemModal({ card, onClose, onCardDelete, id }) {
   );
 
   const { name, avatarUrl, _id } = currentUser;
-  console.log("currentUser in ItemModal", currentUser);
-  console.log("card in ItemModal", card);
-  console.log(card.dataset.ownerid);
-  console.log("_id in item modal", _id);
+  // console.log("currentUser in ItemModal", currentUser);
+  // console.log("card in ItemModal", card);
+  // console.log(card.dataset.ownerid);
+  // console.log("_id in item modal", _id);
   // const isOwn = card.owner._id === _id;
   // const isOwn = card.owner?._id === _id;
   let isOwn = false;

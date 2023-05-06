@@ -3,7 +3,8 @@
   flex-direction: row;
   justify-content: space-between;
   height: 40px;
-  width: 1360px;
+  width: 1280px;
+  /* width: 1360px; */
   align-items: center;
   margin-top: 32px;
   margin-bottom: 28px;
@@ -82,11 +83,22 @@
   margin-right: 12px;
 }
 
+.header__name {
+  width: 80px;
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #000;
+  text-align: right;
+}
+
 .header__avatar {
   background-image: url("../../images/Ellipse.jpg");
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  margin-right: 40px;
+  margin-left: 12px;
 }
 
 .header__avatarInitial {
@@ -97,6 +109,7 @@
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  margin-left: 12px;
 }
 
 .header__profileLink {

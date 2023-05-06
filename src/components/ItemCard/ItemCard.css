@@ -9,6 +9,8 @@
 }
 
 .itemCard__image {
+  /* height: 226px; */
+  /* width: 226px; */
   height: 328px;
   width: 328px;
   border-radius: 20px;
@@ -40,7 +42,7 @@
   height: 19px;
   width: 21px;
   border: none;
-  /* z-index: 4; */
+  z-index: 4;
 }
 
 .itemCard__likeButtonClicked {

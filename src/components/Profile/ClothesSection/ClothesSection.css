@@ -1,4 +1,5 @@
 .clothesSection__container {
+  width: 1018px;
   display: flex;
   flex-direction: column;
 }

@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./ClothesSection.css";
-import ItemCard from "../../ItemCard/ItemCard";
+// import ItemCard from "../../ItemCard/ItemCard";
+
+import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
 const ClothesSection = ({
-  weatherData,
-  clothingItems,
-  weatherType,
-  onCardClick,
+  // weatherData,
+  // clothingItems,
+  // weatherType,
+  // onCardClick,
   children,
   onButtonClick,
 }) => {
+  const { currentUser } = useContext(CurrentUserContext);
+
+  // console.log("currentUser inside of CLOTHES SECTION", currentUser);
+
   return (
     <section className="clothesSection__container">
       <div className="clothesSectionTitle__container">
@@ -18,7 +24,7 @@ const ClothesSection = ({
           + Add new
         </button>
       </div>
-      {children}
+      {currentUser && children}
     </section>
   );
 };

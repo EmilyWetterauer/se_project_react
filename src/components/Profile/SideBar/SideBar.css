@@ -1,12 +1,15 @@
 .sideBar__container {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  /* width: 230px; */
   margin-right: 0;
   margin-left: 40px;
 }
 
 .sideBar__avatarNameContainer {
+  width: 230px;
+  margin-right: none;
+  align-items: center;
   display: flex;
   flex-direction: row;
 }
@@ -50,7 +53,7 @@
   font-weight: 700px;
   color: #000;
   margin-top: 24px;
-  margin-left: 16px;
+  /* margin-left: 16px; */
   text-align: left;
 }
 
@@ -62,6 +65,7 @@
   font-weight: 700px;
   color: #000;
   margin-top: 28px;
-  margin-left: 16px;
+  /* margin-left: 16px; */
   text-align: left;
+  align-items: left;
 }

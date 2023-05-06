@@ -20,7 +20,7 @@ export const getItemList = () => {
 };
 
 export const addItem = ({ id, name, weather, imageUrl, ownerId }) => {
-  console.log("owner inside additem fetch", ownerId);
+  // console.log("owner inside additem fetch", ownerId);
   return fetch("http://localhost:3001/items", {
     method: "POST",
     headers: {
@@ -38,8 +38,8 @@ export const addItem = ({ id, name, weather, imageUrl, ownerId }) => {
 };
 
 export const removeItem = (id) => {
-  console.log("id inside removeItem", id);
-  console.log("remoooovvvvee");
+  // console.log("id inside removeItem", id);
+  // console.log("remoooovvvvee");
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {
@@ -49,9 +49,26 @@ export const removeItem = (id) => {
   }).then(handleServerResponse);
 };
 
-export const addCardLike = () => {};
+export const addCardLike = ({ id }, token) => {
+  console.log("id inside addCardLike fetch", id);
+  return fetch(`http://localhost:3001/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  }).then(handleServerResponse);
+};
 
-export const removeCardLike = () => {};
+export const removeCardLike = ({ id }, token) => {
+  return fetch(`http://localhost:3001/items/${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  }).then(handleServerResponse);
+};
 
 // export const updateUserProfile = async ({ name, avatarUrl }) => {
 //   const response = await fetch(`${baseUrl}/items/me`, {

@@ -14,7 +14,7 @@ export const register = ({ email, password, name, avatar }) => {
         throw new Error(data.error);
       }
 
-      console.log(data);
+      // console.log(data);
     });
 };
 
@@ -57,7 +57,7 @@ export const checkToken = (token) => {
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log("data in checkToken", data);
+      // console.log("data in checkToken", data);
       return data;
     });
 };

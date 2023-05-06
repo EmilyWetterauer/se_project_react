@@ -57,18 +57,18 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState({});
 
   const handleCheckToken = () => {
-    console.log("vanillashake");
+    // console.log("vanillashake");
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
-      console.log("jwt inside handleCheckToken", jwt);
+      // console.log("jwt inside handleCheckToken", jwt);
       auth.checkToken(jwt).then((res) => {
-        console.log("checkToken res:", res);
+        // console.log("checkToken res:", res);
         if (res) {
           setCurrentUser(res.data);
           setIsLoggedIn(true);
 
-          console.log("isLoggedIn inside of handleCheckToken", isLoggedIn);
-          console.log("isLoggedInRes", res);
+          // console.log("isLoggedIn inside of handleCheckToken", isLoggedIn);
+          // console.log("isLoggedInRes", res);
 
           history.push("/Profile");
         }
@@ -130,7 +130,7 @@ const App = () => {
   };
 
   const handleRemoveItem = (card) => {
-    console.log("card inside handleRemoveItem", card);
+    // console.log("card inside handleRemoveItem", card);
     setIsOpen(true);
     removeItem(card.id)
       .then((res) => {
@@ -200,7 +200,7 @@ const App = () => {
   };
 
   const handleEditProfileClick = () => {
-    console.log("herrreeee edit profile");
+    // console.log("herrreeee edit profile");
     setActiveModal("editProfile");
   };
 
@@ -225,7 +225,9 @@ const App = () => {
   //     .catch((err) => console.log(err));
   // };
 
-  const handleLikeClick = ({ id, isLiked, user }) => {
+  const handleLikeClick = ({ id, isLiked, user, card, event }) => {
+    console.log("chocolateSHAKE");
+    // event.stopPropagation();
     const token = localStorage.getItem("jwt");
     // Check if this card is now liked
     isLiked
@@ -276,7 +278,9 @@ const App = () => {
                   cards={clothingItems}
                   onCardClick={handleCardClick}
                   weatherType={weatherType}
-                  onCardLike={handleLikeClick}
+                  handleLikeClick={handleLikeClick}
+                  // owner={item.owner}
+                  card={selectedCard}
                 >
                   {clothingItems
 
@@ -289,7 +293,7 @@ const App = () => {
                       }
                     })
                     .map((item, index) => {
-                      console.log("itemMap", item);
+                      // console.log("itemMap", item);
                       return (
                         <ItemCard
                           name={item.name}
@@ -297,8 +301,9 @@ const App = () => {
                           key={index}
                           id={item._id}
                           onCardClick={handleCardClick}
-                          onCardLike={handleLikeClick}
+                          handleLikeClick={handleLikeClick}
                           owner={item.owner}
+                          card={selectedCard}
                         />
                       );
                     })}
@@ -334,6 +339,7 @@ const App = () => {
                           id={item._id}
                           onCardClick={handleCardClick}
                           owner={item.owner}
+                          handleLikeClick={handleLikeClick}
                         />
                       );
                     })}

@@ -18,7 +18,7 @@ const Profile = ({
   handleInputChange,
   previousValue,
 }) => {
-  console.log("profile");
+  // console.log("profile");
   return (
     <div className="profile__container">
       <section>

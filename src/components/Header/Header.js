@@ -21,9 +21,9 @@ const Header = ({
     avatarInitial = name.charAt(0);
   }
 
-  useEffect(() => {
-    console.log("currentUser inside of Header", currentUser);
-  });
+  // useEffect(() => {
+  //   console.log("currentUser inside of Header", currentUser);
+  // });
 
   if (!weatherData) return null;
   const currentDate = new Date().toLocaleString("default", {
@@ -51,7 +51,7 @@ const Header = ({
             + Add Clothes
           </button>
 
-          <div>{name}</div>
+          <div className="header__name">{name}</div>
           <div /*className="header__avatar"*/ alt="avatar">
             {avatarUrl ? (
               <img className="header__avatar" alt="avatar">

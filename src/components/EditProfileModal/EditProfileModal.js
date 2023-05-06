@@ -13,7 +13,7 @@ const EditProfileModal = ({ onClose }) => {
     name,
     avatar,
   });
-  console.log("currentUser in editProfilModal", currentUser);
+  //   console.log("currentUser in editProfilModal", currentUser);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;

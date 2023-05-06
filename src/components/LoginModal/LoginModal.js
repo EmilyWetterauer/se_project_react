@@ -27,7 +27,7 @@ const LoginModal = ({ onClose, handleRegisterComplete, handleCheckToken }) => {
       .authorize(values)
       .then((res) => {
         if (res) {
-          console.log("res in handleSubmit", res);
+          // console.log("res in handleSubmit", res);
           handleRegisterComplete();
           history.push("/Profile");
         } else {
