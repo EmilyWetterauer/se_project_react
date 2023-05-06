@@ -11,8 +11,9 @@ const SideBar = ({
   handleEditProfileClick,
   handleInputChange,
   previousValue,
+  handleLogOut,
 }) => {
-  const { currentUser, setIsLoggedIn } = useContext(CurrentUserContext);
+  const { currentUser /*setIsLoggedIn*/ } = useContext(CurrentUserContext);
   const { name, avatarUrl } = currentUser;
   let avatarInitial = " ";
 
@@ -22,11 +23,11 @@ const SideBar = ({
 
   const history = useHistory();
 
-  const handleLogOut = () => {
-    localStorage.removeItem("jwt");
-    setIsLoggedIn(false);
-    history.push("/Main");
-  };
+  // const handleLogOut = () => {
+  //   localStorage.removeItem("jwt");
+  //   setIsLoggedIn(false);
+  //   history.push("/Main");
+  // };
 
   return (
     <div className="sideBar__container">

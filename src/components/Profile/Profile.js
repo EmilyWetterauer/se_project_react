@@ -17,6 +17,7 @@ const Profile = ({
   handleEditProfileClick,
   handleInputChange,
   previousValue,
+  handleLogOut,
 }) => {
   // console.log("profile");
   return (
@@ -25,6 +26,7 @@ const Profile = ({
         <SideBar
           handleEditProfileClick={handleEditProfileClick}
           // handleInputChange={handleInputChange}
+          handleLogOut={handleLogOut}
         ></SideBar>
       </section>
       <ClothesSection

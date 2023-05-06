@@ -52,6 +52,7 @@ const Header = ({
           </button>
 
           <div className="header__name">{name}</div>
+          {/* <div className="header__name">"emily</div> */}
           <div /*className="header__avatar"*/ alt="avatar">
             {avatarUrl ? (
               <img className="header__avatar" alt="avatar">

@@ -61,18 +61,23 @@ const App = () => {
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
       // console.log("jwt inside handleCheckToken", jwt);
-      auth.checkToken(jwt).then((res) => {
-        // console.log("checkToken res:", res);
-        if (res) {
-          setCurrentUser(res.data);
-          setIsLoggedIn(true);
+      auth
+        .checkToken(jwt)
+        .then((res) => {
+          // console.log("checkToken res:", res);
+          if (res) {
+            setCurrentUser(res.data);
+            setIsLoggedIn(true);
 
-          // console.log("isLoggedIn inside of handleCheckToken", isLoggedIn);
-          // console.log("isLoggedInRes", res);
+            // console.log("isLoggedIn inside of handleCheckToken", isLoggedIn);
+            // console.log("isLoggedInRes", res);
 
-          history.push("/Profile");
-        }
-      });
+            history.push("/Profile");
+          }
+        })
+        .catch((error) => {
+          console.error("Error in handleCheckToken: ", error);
+        });
     }
   };
 
@@ -251,6 +256,12 @@ const App = () => {
           .catch((err) => console.log(err));
   };
 
+  const handleLogOut = () => {
+    localStorage.removeItem("jwt");
+    setIsLoggedIn(false);
+    history.push("/Main");
+  };
+
   return (
     <CurrentUserContext.Provider
       value={{
@@ -320,6 +331,7 @@ const App = () => {
                   onCardDelete={handleRemoveItem}
                   handleEditProfileClick={handleEditProfileClick}
                   // handleInputChange={handleInputChange}
+                  handleLogOut={handleLogOut}
                 >
                   {clothingItems
                     .filter((item) => {
