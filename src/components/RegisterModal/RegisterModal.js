@@ -16,7 +16,7 @@ const RegisterModal = ({ onClose, handleRegisterComplete, login }) => {
     email: "",
     password: "",
     name: "",
-    avatarURL: "",
+    avatar: "",
   });
   // const { values, handleChange } = useForm({
   //   Email: "",

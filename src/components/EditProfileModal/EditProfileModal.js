@@ -52,8 +52,8 @@ const EditProfileModal = ({ onClose }) => {
             className="editProfileModal__avatarUrlField"
             placeholder="avatarUrl"
             type="text"
-            name="avatarUrl"
-            value={values.avatarUrl}
+            name="avatar"
+            value={values.avatar}
             onChange={handleInputChange}
             id="avatar"
             required

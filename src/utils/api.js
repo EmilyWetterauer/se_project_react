@@ -2,8 +2,9 @@
 
 const token = localStorage.getItem("jwt");
 
-export const baseUrl = "http://localhost:3001";
-// "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react";
+// export const baseUrl = "http://localhost:3001";
+export const baseUrl =
+  "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react";
 
 export const handleServerResponse = (res) => {
   const resp = res.json();
@@ -21,7 +22,7 @@ export const getItemList = () => {
 
 export const addItem = ({ id, name, weather, imageUrl, ownerId }) => {
   // console.log("owner inside additem fetch", ownerId);
-  return fetch("http://localhost:3001/items", {
+  return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -51,7 +52,7 @@ export const removeItem = (id) => {
 
 export const addCardLike = ({ id }, token) => {
   console.log("id inside addCardLike fetch", id);
-  return fetch(`http://localhost:3001/items/${id}/likes`, {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
       authorization: `Bearer ${token}`,
@@ -61,7 +62,7 @@ export const addCardLike = ({ id }, token) => {
 };
 
 export const removeCardLike = ({ id }, token) => {
-  return fetch(`http://localhost:3001/items/${id}/likes`, {
+  return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
       authorization: `Bearer ${token}`,
