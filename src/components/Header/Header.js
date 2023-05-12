@@ -1,7 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import "./Header.css";
 import logo from "../../images/wtwrLogo.png";
-import avatarDefault from "../../images/Ellipse.jpg";
+// import avatarDefault from "../../images/Ellipse.jpg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
@@ -12,14 +12,22 @@ const Header = ({
   onButtonClick,
   handleRegisterClick,
   handleLoginModalClick,
+  handleCheckToken,
+  // currentUser,
+  // isLoggedIn,
 }) => {
-  const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
-  const { name, avatarUrl } = currentUser;
+  const { currentUser = {}, isLoggedIn } = useContext(CurrentUserContext);
+
+  const { name, avatar } = currentUser;
+  // const { name, avatar } = currentUser;
   let avatarInitial = " ";
 
   if (name) {
     avatarInitial = name.charAt(0);
   }
+  // if (currentUser && currentUser.name) {
+  //   avatarInitial = name.charAt(0);
+  // }
 
   // useEffect(() => {
   //   console.log("currentUser inside of Header", currentUser);
@@ -30,8 +38,8 @@ const Header = ({
     month: "long",
     day: "numeric",
   });
-  const signUp = "Sign Up";
-  const signIn = "Sign In";
+  // const signUp = "Sign Up";
+  // const signIn = "Sign In";
 
   const renderAuthorizedUsers = () => {
     return (
@@ -53,14 +61,19 @@ const Header = ({
 
           <div className="header__name">{name}</div>
           {/* <div className="header__name">"emily</div> */}
-          <div /*className="header__avatar"*/ alt="avatar">
-            {avatarUrl ? (
-              <img className="header__avatar" alt="avatar">
-                {avatarUrl}
-              </img>
-            ) : (
-              <div className="header__avatarInitial">{avatarInitial}</div>
-            )}
+          <div
+            /*className="header__avatar"*/ alt="avatar"
+            onClick={handleCheckToken}
+          >
+            {" "}
+            <div className="header__avatar">
+              {avatar ? (
+                // <div className="header__avatar">
+                <img /*className="header__avatar"*/ alt="avatar" src={avatar} />
+              ) : (
+                <div className="header__avatarInitial">{avatarInitial}</div>
+              )}
+            </div>
           </div>
 
           {/* <img className="header__avatar" alt="avatar">

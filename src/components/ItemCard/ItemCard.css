@@ -42,7 +42,7 @@
   height: 19px;
   width: 21px;
   border: none;
-  z-index: 4;
+  z-index: 1;
 }
 
 .itemCard__likeButtonClicked {

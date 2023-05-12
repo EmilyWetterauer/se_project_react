@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useContext } from "react";
-import CommandPalette from "react-command-palette";
+import React, { useEffect, useState } from "react";
+// import CommandPalette from "react-command-palette";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ItemCard from "../ItemCard/ItemCard";
 import ItemModal from "../ItemModal/ItemModal";
-import ModalWithForm from "../ModalWithForm/ModalWithForm";
-import WeatherCard from "../../components/WeatherCard/WeatherCard";
+// import ModalWithForm from "../ModalWithForm/ModalWithForm";
+// import WeatherCard from "../../components/WeatherCard/WeatherCard";
 import {
   getForecastWeather,
   filterDataFromWeatherAPI,
@@ -20,7 +20,7 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import {
   BrowserRouter,
   Route,
-  Switch,
+  // Switch,
   Redirect,
   useHistory,
 } from "react-router-dom";
@@ -31,9 +31,9 @@ import {
   getItemList,
   addItem,
   removeItem,
-  updateUserProfile,
+  // updateUserProfile,
 } from "../../utils/api.js";
-import { useForm } from "../../utils/customHooks";
+// import { useForm } from "../../utils/customHooks";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
@@ -50,14 +50,15 @@ const App = () => {
   const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState(null);
-  const [clicked, setClicked] = useState(false);
+  // const [clicked, setClicked] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [isLiked, setIsLiked] = useState("false");
 
   const handleCheckToken = () => {
-    // console.log("vanillashake");
+    console.log("vanillashake");
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
       // console.log("jwt inside handleCheckToken", jwt);
@@ -99,7 +100,7 @@ const App = () => {
   };
 
   const handleAddClick = () => {
-    setClicked(true);
+    // setClicked(true);
     setActiveModal("create");
   };
 
@@ -230,30 +231,39 @@ const App = () => {
   //     .catch((err) => console.log(err));
   // };
 
-  const handleLikeClick = ({ id, isLiked, user, card, event }) => {
-    console.log("chocolateSHAKE");
-    // event.stopPropagation();
+  const handleLikeClick = ({ id, isLiked, user }) => {
+    console.log("id inside handleLikeClick", id);
+    // event.stopPropagation()
     const token = localStorage.getItem("jwt");
     // Check if this card is now liked
     isLiked
       ? // if so, send a request to add the user's id to the card's likes array
         api
-          .addCardLike({ id, user }, token)
+          .addCardLike({ id: id, user }, token)
+          // .addCardLike(id)
           .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
-            );
+            setClothingItems((cards) => {
+              console.log("cards", cards);
+              return cards.map((c) => (c.id === id ? updatedCard : c));
+            });
+            // setIsLiked("true");
           })
           .catch((err) => console.log(err))
       : // if not, send a request to remove the user's id from the card's likes array
         api
-          .removeCardLike({ id, user }, token)
+          .removeCardLike({ id: id, user }, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((c) => (c.id === id ? updatedCard : c))
             );
           })
           .catch((err) => console.log(err));
+  };
+
+  const handleIsLiked = (id) => {
+    if (currentUser === id) {
+      setIsLiked(true);
+    }
   };
 
   const handleLogOut = () => {
@@ -268,6 +278,7 @@ const App = () => {
         setIsLoggedIn,
         isLoggedIn,
         currentUser,
+        setCurrentUser,
       }}
     >
       <div className="page">
@@ -282,6 +293,7 @@ const App = () => {
                 onButtonClick={handleAddClick}
                 handleRegisterClick={handleRegisterClick}
                 handleLoginModalClick={handleLoginModalClick}
+                handleCheckToken={handleCheckToken}
               />
               <Route path="/Main">
                 <Main
@@ -302,19 +314,21 @@ const App = () => {
                       ) {
                         return true;
                       }
+                      return false;
                     })
                     .map((item, index) => {
-                      // console.log("itemMap", item);
+                      console.log("itemMap", item);
                       return (
                         <ItemCard
                           name={item.name}
                           imageUrl={item.imageUrl}
                           key={index}
-                          id={item._id}
+                          id={item.id}
                           onCardClick={handleCardClick}
                           handleLikeClick={handleLikeClick}
                           owner={item.owner}
                           card={selectedCard}
+                          handleIsLiked={handleIsLiked}
                         />
                       );
                     })}
@@ -332,6 +346,7 @@ const App = () => {
                   handleEditProfileClick={handleEditProfileClick}
                   // handleInputChange={handleInputChange}
                   handleLogOut={handleLogOut}
+                  handleLikeClick={handleLikeClick}
                 >
                   {clothingItems
                     .filter((item) => {
@@ -341,6 +356,7 @@ const App = () => {
                       ) {
                         return true;
                       }
+                      return false;
                     })
                     .map((item, index) => {
                       return (
@@ -348,10 +364,11 @@ const App = () => {
                           name={item.name}
                           imageUrl={item.imageUrl}
                           key={index}
-                          id={item._id}
+                          id={item.id}
                           onCardClick={handleCardClick}
                           owner={item.owner}
                           handleLikeClick={handleLikeClick}
+                          handleIsLiked={handleIsLiked}
                         />
                       );
                     })}

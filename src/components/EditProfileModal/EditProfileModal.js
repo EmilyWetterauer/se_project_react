@@ -1,13 +1,13 @@
 import React, { useState, useContext } from "react";
 
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 import "./EditProfileModal.css";
 
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const EditProfileModal = ({ onClose }) => {
-  const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
   const { name, avatar } = currentUser;
   const [values, setValues] = useState({
     name,
@@ -39,7 +39,6 @@ const EditProfileModal = ({ onClose }) => {
             type="text"
             onChange={handleInputChange}
             placeholder="name"
-            type="text"
             id="name"
             name="name"
             value={values.name}

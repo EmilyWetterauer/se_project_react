@@ -50,7 +50,7 @@ export const removeItem = (id) => {
   }).then(handleServerResponse);
 };
 
-export const addCardLike = ({ id }, token) => {
+export const addCardLike = ({ id }) => {
   console.log("id inside addCardLike fetch", id);
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
@@ -61,7 +61,7 @@ export const addCardLike = ({ id }, token) => {
   }).then(handleServerResponse);
 };
 
-export const removeCardLike = ({ id }, token) => {
+export const removeCardLike = ({ id }) => {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {

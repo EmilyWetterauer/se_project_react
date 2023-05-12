@@ -1,7 +1,10 @@
-// import { baseUrl } from "../utils/api";
+import { baseUrl } from "../utils/api";
+
+// fetch(`${baseUrl}/items`,
 
 export const register = ({ email, password, name, avatar }) => {
-  return fetch("http://localhost:3001/signup", {
+  // return fetch("http://localhost:3001/signup", {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -19,7 +22,7 @@ export const register = ({ email, password, name, avatar }) => {
 };
 
 export const authorize = ({ email, password }) => {
-  return fetch("http://localhost:3001/signin", {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -48,7 +51,8 @@ export const getToken = () => {
 };
 
 export const checkToken = (token) => {
-  return fetch("http://localhost:3001/users/me", {
+  // return fetch("http://localhost:3001/users/me", {
+  return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
