@@ -21,7 +21,7 @@
 }
 
 .registerModal__closeButton {
-  background-image: url(../../images/closeButtonImage.png);
+  background-image: url(../../images/closeButtonImageFormModal.png);
   background-position: center;
   position: absolute;
   top: 27px;

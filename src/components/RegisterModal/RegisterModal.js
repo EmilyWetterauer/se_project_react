@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 
-import { Link, BrowserRouter, Route, useHistory } from "react-router-dom";
+import { Link, BrowserRouter, useHistory } from "react-router-dom";
 
 import "./RegisterModal.css";
-
-// import { useForm } from "../../utils/customHooks";
-
-// import { register } from "../../../auth";
 
 import * as auth from "../../utils/auth";
 
@@ -18,12 +14,6 @@ const RegisterModal = ({ onClose, handleRegisterComplete, login }) => {
     name: "",
     avatar: "",
   });
-  // const { values, handleChange } = useForm({
-  //   Email: "",
-  //   Password: "",
-  //   name: "",
-  //   avatarURL: "",
-  // });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +37,6 @@ const RegisterModal = ({ onClose, handleRegisterComplete, login }) => {
   return (
     <BrowserRouter>
       <div className="registerModal__wrapper" onClick={onClose}>
-        {/* <div className="registerModal__container"> */}
         <div className="registerModal__container">
           <div className="registerModal__closeButton" onClick={onClose}></div>
           <h2 className="registerModal__title">Sign Up</h2>
@@ -106,7 +95,6 @@ const RegisterModal = ({ onClose, handleRegisterComplete, login }) => {
           <div
             className="registerModal__nextButton"
             type="submit"
-            // onClick={(handleSubmit, handleRegisterComplete)}
             onClick={handleSubmit}
           >
             <Link to="/Profile">Next</Link>

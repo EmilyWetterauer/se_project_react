@@ -1,9 +1,8 @@
 import React, { useEffect, useContext, useState } from "react";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import "./ToggleSwitch.css";
-import { filterDataFromWeatherAPI } from "../../utils/weatherApi";
 
-const ToggleSwitch = ({}) => {
+const ToggleSwitch = () => {
   const { currentTemperatureUnit, handleToggleSwitchChange } = useContext(
     CurrentTemperatureUnitContext
   );
@@ -19,7 +18,6 @@ const ToggleSwitch = ({}) => {
   };
 
   return (
-    // <div className="toggleSwitch__container">
     <>
       <input
         checked={checked}
@@ -34,12 +32,10 @@ const ToggleSwitch = ({}) => {
         htmlFor={`toggleSwitch-new`}
         style={{ background: checked && "#fff" }}
       >
-        {/* <span className="sliderRound"></span> */}
         <span className="toggleSwitch-text">{"F C"}</span>
         <span className="toggleSwitch-button">{currentTemperatureUnit} </span>
       </label>
     </>
-    // </div>
   );
 };
 

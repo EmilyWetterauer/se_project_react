@@ -9,8 +9,6 @@
 }
 
 .itemCard__image {
-  /* height: 226px; */
-  /* width: 226px; */
   height: 328px;
   width: 328px;
   border-radius: 20px;
@@ -47,4 +45,10 @@
 
 .itemCard__likeButtonClicked {
   background-image: url("../../images/heartFilled.png");
+  position: absolute;
+  background-color: none;
+  height: 19px;
+  width: 21px;
+  border: none;
+  z-index: 1;
 }

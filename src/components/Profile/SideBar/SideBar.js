@@ -1,9 +1,7 @@
 import React from "react";
 import "./SideBar.css";
 
-import { useState, useContext } from "react";
-
-import { useHistory } from "react-router-dom";
+import { useContext } from "react";
 
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
@@ -13,37 +11,27 @@ const SideBar = ({
   previousValue,
   handleLogOut,
 }) => {
-  const { currentUser /*setIsLoggedIn*/ } = useContext(CurrentUserContext);
-  const { name, avatarUrl } = currentUser;
+  const { currentUser = {} } = useContext(CurrentUserContext);
+  const { name, avatar } = currentUser;
   let avatarInitial = " ";
 
   if (name) {
     avatarInitial = name.charAt(0);
   }
 
-  const history = useHistory();
-
-  // const handleLogOut = () => {
-  //   localStorage.removeItem("jwt");
-  //   setIsLoggedIn(false);
-  //   history.push("/Main");
-  // };
-
   return (
     <div className="sideBar__container">
       <div className="sideBar__avatarNameContainer">
-        <div /*className="header__avatar"*/ alt="avatar">
-          {avatarUrl ? (
-            <img className="header__avatar" alt="avatar">
-              {avatarUrl}
-            </img>
+        <div alt="avatar">
+          {avatar ? (
+            <div className="header__avatar">
+              <img alt="avatar" src={avatar}></img>
+            </div>
           ) : (
             <div className="sideBar__avatarInitial">{avatarInitial}</div>
           )}
         </div>
-        {/* <img className="sideBar__avatar" alt="avatar">
-        {avatarUrl}
-      </img> */}
+
         <p className="sideBar__name">{name}</p>
       </div>
       <div className="sideBar__buttonsContainer">

@@ -1,10 +1,8 @@
-// import { apiKey } from "./constants";
-
 const token = localStorage.getItem("jwt");
 
-// export const baseUrl = "http://localhost:3001";
-export const baseUrl =
-  "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react";
+export const baseUrl = "http://localhost:3001";
+// export const baseUrl =
+//   "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react";
 
 export const handleServerResponse = (res) => {
   const resp = res.json();
@@ -21,7 +19,6 @@ export const getItemList = () => {
 };
 
 export const addItem = ({ id, name, weather, imageUrl, ownerId }) => {
-  // console.log("owner inside additem fetch", ownerId);
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -39,8 +36,6 @@ export const addItem = ({ id, name, weather, imageUrl, ownerId }) => {
 };
 
 export const removeItem = (id) => {
-  // console.log("id inside removeItem", id);
-  // console.log("remoooovvvvee");
   return fetch(`${baseUrl}/items/${id}`, {
     method: "DELETE",
     headers: {

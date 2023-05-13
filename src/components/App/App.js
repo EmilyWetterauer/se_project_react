@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
-// import CommandPalette from "react-command-palette";
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ItemCard from "../ItemCard/ItemCard";
 import ItemModal from "../ItemModal/ItemModal";
-// import ModalWithForm from "../ModalWithForm/ModalWithForm";
-// import WeatherCard from "../../components/WeatherCard/WeatherCard";
 import {
   getForecastWeather,
   filterDataFromWeatherAPI,
@@ -17,23 +14,10 @@ import { location } from "../../utils/constants";
 import { apiKey } from "../../utils/constants";
 
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
-import {
-  BrowserRouter,
-  Route,
-  // Switch,
-  Redirect,
-  useHistory,
-} from "react-router-dom";
-// import { Link } from "react-router-dom";
+import { BrowserRouter, Route, Redirect, useHistory } from "react-router-dom";
 import Profile from "../Profile/Profile";
 import AddItemModal from "../AddItemModal/AddItemModal";
-import {
-  getItemList,
-  addItem,
-  removeItem,
-  // updateUserProfile,
-} from "../../utils/api.js";
-// import { useForm } from "../../utils/customHooks";
+import { getItemList, addItem, removeItem } from "../../utils/api.js";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
@@ -50,28 +34,23 @@ const App = () => {
   const [clothingItems, setClothingItems] = useState([]);
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState(null);
-  // const [clicked, setClicked] = useState(false);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
-  const [isLiked, setIsLiked] = useState("false");
 
   const handleCheckToken = () => {
     console.log("vanillashake");
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
-      // console.log("jwt inside handleCheckToken", jwt);
       auth
         .checkToken(jwt)
         .then((res) => {
           // console.log("checkToken res:", res);
           if (res) {
             setCurrentUser(res.data);
+            console.log("res.data in handleCheckToken", res.data);
             setIsLoggedIn(true);
-
-            // console.log("isLoggedIn inside of handleCheckToken", isLoggedIn);
-            // console.log("isLoggedInRes", res);
 
             history.push("/Profile");
           }
@@ -100,7 +79,6 @@ const App = () => {
   };
 
   const handleAddClick = () => {
-    // setClicked(true);
     setActiveModal("create");
   };
 
@@ -210,60 +188,26 @@ const App = () => {
     setActiveModal("editProfile");
   };
 
-  // const handleInputChange = (event) => {
-  //   const newValue = event.target.value;
-  //   setPreviousValue(newValue);
-  // };
-
-  // const handleUpdateUserProfile = (name, avatarUrl) => {
-  //   setIsOpen(true);
-  //   updateUserProfile()
-  //     .then((res) => {
-  //       if (res) {
-  //         setClothingItems((cards) =>
-  //           cards.filter((c) => {
-  //             // return c.id + "" !== card.id;
-  //           })
-  //         );
-  //         setActiveModal("");
-  //       }
-  //     })
-  //     .catch((err) => console.log(err));
-  // };
-
   const handleLikeClick = ({ id, isLiked, user }) => {
     console.log("id inside handleLikeClick", id);
-    // event.stopPropagation()
     const token = localStorage.getItem("jwt");
-    // Check if this card is now liked
-    isLiked
-      ? // if so, send a request to add the user's id to the card's likes array
-        api
+    !isLiked
+      ? api
           .addCardLike({ id: id, user }, token)
-          // .addCardLike(id)
           .then((updatedCard) => {
             setClothingItems((cards) => {
-              console.log("cards", cards);
-              return cards.map((c) => (c.id === id ? updatedCard : c));
+              return cards.map((c) => (c._id === id ? updatedCard.data : c));
             });
-            // setIsLiked("true");
           })
           .catch((err) => console.log(err))
-      : // if not, send a request to remove the user's id from the card's likes array
-        api
+      : api
           .removeCardLike({ id: id, user }, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((c) => (c.id === id ? updatedCard : c))
+              cards.map((c) => (c._id === id ? updatedCard.data : c))
             );
           })
           .catch((err) => console.log(err));
-  };
-
-  const handleIsLiked = (id) => {
-    if (currentUser === id) {
-      setIsLiked(true);
-    }
   };
 
   const handleLogOut = () => {
@@ -275,7 +219,6 @@ const App = () => {
   return (
     <CurrentUserContext.Provider
       value={{
-        setIsLoggedIn,
         isLoggedIn,
         currentUser,
         setCurrentUser,
@@ -287,7 +230,6 @@ const App = () => {
         >
           <div className="pageWrapper">
             <BrowserRouter>
-              {/* <Switch> */}
               <Header
                 weatherData={weatherData}
                 onButtonClick={handleAddClick}
@@ -302,7 +244,6 @@ const App = () => {
                   onCardClick={handleCardClick}
                   weatherType={weatherType}
                   handleLikeClick={handleLikeClick}
-                  // owner={item.owner}
                   card={selectedCard}
                 >
                   {clothingItems
@@ -323,12 +264,11 @@ const App = () => {
                           name={item.name}
                           imageUrl={item.imageUrl}
                           key={index}
-                          id={item.id}
+                          id={item._id}
                           onCardClick={handleCardClick}
                           handleLikeClick={handleLikeClick}
                           owner={item.owner}
                           card={selectedCard}
-                          handleIsLiked={handleIsLiked}
                         />
                       );
                     })}
@@ -344,7 +284,6 @@ const App = () => {
                   onButtonClick={handleAddClick}
                   onCardDelete={handleRemoveItem}
                   handleEditProfileClick={handleEditProfileClick}
-                  // handleInputChange={handleInputChange}
                   handleLogOut={handleLogOut}
                   handleLikeClick={handleLikeClick}
                 >
@@ -364,16 +303,15 @@ const App = () => {
                           name={item.name}
                           imageUrl={item.imageUrl}
                           key={index}
-                          id={item.id}
+                          id={item._id}
                           onCardClick={handleCardClick}
                           owner={item.owner}
                           handleLikeClick={handleLikeClick}
-                          handleIsLiked={handleIsLiked}
+                          likes={item.likes}
                         />
                       );
                     })}
                 </Profile>
-                {/* </Route> */}
               </ProtectedRoute>
               <Route path="/">
                 {isLoggedIn ? (
@@ -384,7 +322,6 @@ const App = () => {
               </Route>
 
               <Footer />
-              {/* </Switch> */}
               {activeModal === "create" && (
                 <AddItemModal
                   isOpen={isOpen}

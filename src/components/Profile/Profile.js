@@ -3,8 +3,6 @@ import SideBar from "./SideBar/SideBar";
 import ClothesSection from "./ClothesSection/ClothesSection";
 
 import "./Profile.css";
-// import { filterDataFromWeatherAPI } from "../../utils/weatherApi";
-// import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 
 const Profile = ({
   weatherData,
@@ -18,14 +16,13 @@ const Profile = ({
   handleInputChange,
   previousValue,
   handleLogOut,
+  handleLikeClick,
 }) => {
-  // console.log("profile");
   return (
     <div className="profile__container">
       <section>
         <SideBar
           handleEditProfileClick={handleEditProfileClick}
-          // handleInputChange={handleInputChange}
           handleLogOut={handleLogOut}
         ></SideBar>
       </section>
