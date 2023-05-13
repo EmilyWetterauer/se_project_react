@@ -13,7 +13,7 @@ const EditProfileModal = ({
   handleCheckToken,
 }) => {
   const history = useHistory();
-  const { currentUser } = useContext(CurrentUserContext);
+  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
   const { name, avatar } = currentUser;
   const [values, setValues] = useState({
     name,
@@ -34,7 +34,7 @@ const EditProfileModal = ({
       .updateUserProfile(values)
       .then((res) => {
         if (res) {
-          console.log("res in handlesubmit epmodal", res);
+          setCurrentUser(res.data);
           handleRegisterComplete();
           history.push("/Profile");
         } else {
@@ -78,11 +78,7 @@ const EditProfileModal = ({
             required
           />
 
-          <button
-            className="editProfileModal__saveChangesButton"
-            type="submit"
-            onClick={handleCheckToken}
-          >
+          <button className="editProfileModal__saveChangesButton" type="submit">
             Save Changes
           </button>
         </div>

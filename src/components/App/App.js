@@ -48,7 +48,6 @@ const App = () => {
           // console.log("checkToken res:", res);
           if (res) {
             setCurrentUser(res.data);
-            console.log("res.data in handleCheckToken", res.data);
             setIsLoggedIn(true);
 
             history.push("/Profile");
