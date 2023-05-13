@@ -1,13 +1,15 @@
 {
-  "homepage": "http://localhost3000",
+  "homepage": "https://EmilyWetterauer.github.io/se_project_react",
   "name": "se_project_react",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "gh-pages": "^5.0.0",
     "json-server": "^0.17.1",
+    "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-command-palette": "^0.22.1",
     "react-dom": "^18.2.0",
@@ -20,7 +22,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "json:server": "json-server --watch db.json --port 3001"
+    "json:server": "json-server --watch db.json --port 3001",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
