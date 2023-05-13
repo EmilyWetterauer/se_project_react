@@ -59,21 +59,31 @@ const Header = ({
             + Add Clothes
           </button>
 
-          <div className="header__name">{name}</div>
+          <Link to="/Profile">
+            {" "}
+            <div className="header__name" style={{ textDecoration: "none" }}>
+              {name}
+            </div>
+          </Link>
           {/* <div className="header__name">"emily</div> */}
           <div
             /*className="header__avatar"*/ alt="avatar"
             onClick={handleCheckToken}
           >
             {" "}
-            <div className="header__avatar">
-              {avatar ? (
-                // <div className="header__avatar">
-                <img /*className="header__avatar"*/ alt="avatar" src={avatar} />
-              ) : (
-                <div className="header__avatarInitial">{avatarInitial}</div>
-              )}
-            </div>
+            <Link to="/Profile">
+              <div className="header__avatar">
+                {avatar ? (
+                  // <div className="header__avatar">
+                  <img
+                    /*className="header__avatar"*/ alt="avatar"
+                    src={avatar}
+                  />
+                ) : (
+                  <div className="header__avatarInitial">{avatarInitial}</div>
+                )}
+              </div>
+            </Link>
           </div>
 
           {/* <img className="header__avatar" alt="avatar">

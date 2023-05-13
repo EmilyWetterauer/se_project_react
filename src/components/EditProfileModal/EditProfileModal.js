@@ -1,19 +1,24 @@
 import React, { useState, useContext } from "react";
 
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import "./EditProfileModal.css";
 
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import * as api from "../../utils/api";
 
-const EditProfileModal = ({ onClose }) => {
+const EditProfileModal = ({
+  onClose,
+  handleRegisterComplete,
+  handleCheckToken,
+}) => {
+  const history = useHistory();
   const { currentUser } = useContext(CurrentUserContext);
   const { name, avatar } = currentUser;
   const [values, setValues] = useState({
     name,
     avatar,
   });
-  //   console.log("currentUser in editProfilModal", currentUser);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -22,8 +27,23 @@ const EditProfileModal = ({ onClose }) => {
       [name]: value,
     });
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    api
+      .updateUserProfile(values)
+      .then((res) => {
+        if (res) {
+          console.log("res in handlesubmit epmodal", res);
+          handleRegisterComplete();
+          history.push("/Profile");
+        } else {
+        }
+      })
+      .catch((err) => console.log(err));
+  };
   return (
-    <form /*onSubmit={}*/>
+    <form onSubmit={handleSubmit}>
       <div className="editProfileModal__wrapper" onClick={onClose}>
         <div className="editProfileModal__container">
           <div
@@ -58,7 +78,11 @@ const EditProfileModal = ({ onClose }) => {
             required
           />
 
-          <button className="editProfileModal__saveChangesButton" type="submit">
+          <button
+            className="editProfileModal__saveChangesButton"
+            type="submit"
+            onClick={handleCheckToken}
+          >
             Save Changes
           </button>
         </div>

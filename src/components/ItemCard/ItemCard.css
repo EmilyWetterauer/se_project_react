@@ -22,9 +22,12 @@
 
 .itemCard__title {
   position: absolute;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 75px;
+  height: 20px;
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
   top: 23px;
+  right: 5px;
   font-weight: 700;
   font-size: 16px;
   font-family: "Montserrat", sans-serif;
@@ -35,6 +38,8 @@
 
 .itemCard__likeButton {
   position: absolute;
+  top: 35px;
+  left: 20px;
   background-color: none;
   background-image: url("../../images/heart.svg");
   height: 19px;
@@ -46,6 +51,8 @@
 .itemCard__likeButtonClicked {
   background-image: url("../../images/heartFilled.png");
   position: absolute;
+  top: 35px;
+  left: 20px;
   background-color: none;
   height: 19px;
   width: 21px;

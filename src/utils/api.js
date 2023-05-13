@@ -66,18 +66,22 @@ export const removeCardLike = ({ id }) => {
   }).then(handleServerResponse);
 };
 
-// export const updateUserProfile = async ({ name, avatarUrl }) => {
-//   const response = await fetch(`${baseUrl}/items/me`, {
-//     method: "PATCH",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify({ name, avatarUrl }),
-//   }).then(handleServerResponse);
+export const updateUserProfile = ({ name, avatar }) => {
+  // const response = fetch(`${baseUrl}/users/me`, {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ name, avatar }),
+  }).then(handleServerResponse);
 
-// if (!response.ok) {
-//   const errorMessage = `Failed to update profile data: ${response.statusText}`;
-//   throw new Error(errorMessage);
-// }
+  // if (!response.ok) {
+  //   const errorMessage = `Failed to update profile data: ${response.statusText}`;
+  //   throw new Error(errorMessage);
+  // }
 
-// const updatedUserData = await response.json();
-// return updatedUserData;
-// };
+  // const updatedUserData = response.json();
+  // return updatedUserData;
+};

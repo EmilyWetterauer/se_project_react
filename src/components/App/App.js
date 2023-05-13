@@ -40,7 +40,6 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState({});
 
   const handleCheckToken = () => {
-    console.log("vanillashake");
     if (localStorage.getItem("jwt")) {
       const jwt = localStorage.getItem("jwt");
       auth
@@ -350,7 +349,11 @@ const App = () => {
                 />
               )}
               {activeModal === "editProfile" && (
-                <EditProfileModal onClose={closeAllModals} />
+                <EditProfileModal
+                  onClose={closeAllModals}
+                  handleCheckToken={handleCheckToken}
+                  handleRegisterComplete={handleRegisterComplete}
+                />
               )}
             </BrowserRouter>
           </div>

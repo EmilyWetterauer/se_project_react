@@ -90,6 +90,7 @@
   font-weight: 700;
   color: #000;
   text-align: right;
+  /* text-decoration: none; */
 }
 
 .header__avatar {
