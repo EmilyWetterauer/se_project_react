@@ -24,7 +24,7 @@
     "eject": "react-scripts eject",
     "json:server": "json-server --watch db.json --port 3001",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b main -d build --repo https://github.com/EmilyWetterauer/se_project_react.git"
+    "deploy": "gh-pages -b main -d build"
   },
   "eslintConfig": {
     "extends": [
