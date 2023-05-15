@@ -243,6 +243,7 @@ const App = () => {
                   weatherType={weatherType}
                   handleLikeClick={handleLikeClick}
                   card={selectedCard}
+                  onButtonClick={handleAddClick}
                 >
                   {clothingItems
 
@@ -267,6 +268,7 @@ const App = () => {
                           handleLikeClick={handleLikeClick}
                           owner={item.owner}
                           card={selectedCard}
+                          likes={item.likes}
                         />
                       );
                     })}

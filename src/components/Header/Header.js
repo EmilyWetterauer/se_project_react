@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "./Header.css";
 import logo from "../../images/wtwrLogo.png";
-// import avatarDefault from "../../images/Ellipse.jpg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
@@ -13,39 +12,27 @@ const Header = ({
   handleRegisterClick,
   handleLoginModalClick,
   handleCheckToken,
-  // currentUser,
-  // isLoggedIn,
 }) => {
   const { currentUser = {}, isLoggedIn } = useContext(CurrentUserContext);
 
   const { name, avatar } = currentUser;
-  // const { name, avatar } = currentUser;
   let avatarInitial = " ";
 
   if (name) {
     avatarInitial = name.charAt(0);
   }
-  // if (currentUser && currentUser.name) {
-  //   avatarInitial = name.charAt(0);
-  // }
-
-  // useEffect(() => {
-  //   console.log("currentUser inside of Header", currentUser);
-  // });
 
   if (!weatherData) return null;
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
-  // const signUp = "Sign Up";
-  // const signIn = "Sign In";
 
   const renderAuthorizedUsers = () => {
     return (
       <header className="header">
         <div className="header__leftSideContainer">
-          <Link to="/">
+          <Link to="/Main">
             <img src={logo} alt="logo" className="header__logo" />
           </Link>
           <p className="header__dateCity">
@@ -65,30 +52,18 @@ const Header = ({
               {name}
             </div>
           </Link>
-          {/* <div className="header__name">"emily</div> */}
-          <div
-            /*className="header__avatar"*/ alt="avatar"
-            onClick={handleCheckToken}
-          >
+          <div alt="avatar" onClick={handleCheckToken}>
             {" "}
             <Link to="/Profile">
               <div className="header__avatar">
                 {avatar ? (
-                  // <div className="header__avatar">
-                  <img
-                    /*className="header__avatar"*/ alt="avatar"
-                    src={avatar}
-                  />
+                  <img alt="avatar" src={avatar} />
                 ) : (
                   <div className="header__avatarInitial">{avatarInitial}</div>
                 )}
               </div>
             </Link>
           </div>
-
-          {/* <img className="header__avatar" alt="avatar">
-            {avatarUrl}
-          </img> */}
         </nav>
       </header>
     );
@@ -97,9 +72,8 @@ const Header = ({
   const renderNonAuthorizedUsers = () => {
     return (
       <header className="header">
-        {/* <div className="header__container"> */}
         <div className="header__leftSideContainer">
-          <Link to="/">
+          <Link to="/Main">
             <img src={logo} alt="logo" className="header__logo" />
           </Link>
           <p className="header__dateCity">
@@ -107,7 +81,6 @@ const Header = ({
           </p>
         </div>
         <nav className="navigation__container">
-          {/* <div className="navigation__container"> */}
           <ToggleSwitch />
           <button onClick={onButtonClick} className="navigation__button">
             + Add Clothes
@@ -118,12 +91,6 @@ const Header = ({
           <div onClick={handleLoginModalClick} className="navigation__signIn">
             Sign In
           </div>
-          {/* <Link className="header__profileLink" to="/profile">
-            <div className="navigation__signUp">{signUp}</div>
-          </Link>
-          <div className="navigation__signIn">{signIn}</div> */}
-          {/* <img className="header__avatar" alt="avatar"></img> */}
-          {/* </div> */}
         </nav>
       </header>
     );
