@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/EmilyWetterauer/se_project_react.git/static/css/main.c0004567.css",
+    "main.js": "/EmilyWetterauer/se_project_react.git/static/js/main.a8a1f1bd.js",
+    "static/js/787.79f92504.chunk.js": "/EmilyWetterauer/se_project_react.git/static/js/787.79f92504.chunk.js",
+    "static/media/daySnow.jpg": "/EmilyWetterauer/se_project_react.git/static/media/daySnow.610abe1a06ffa45fede2.jpg",
+    "static/media/heart.svg": "/EmilyWetterauer/se_project_react.git/static/media/heart.49570bcb1d637fdb38e5.svg",
+    "index.html": "/EmilyWetterauer/se_project_react.git/index.html",
+    "main.c0004567.css.map": "/EmilyWetterauer/se_project_react.git/static/css/main.c0004567.css.map",
+    "main.a8a1f1bd.js.map": "/EmilyWetterauer/se_project_react.git/static/js/main.a8a1f1bd.js.map",
+    "787.79f92504.chunk.js.map": "/EmilyWetterauer/se_project_react.git/static/js/787.79f92504.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c0004567.css",
+    "static/js/main.a8a1f1bd.js"
+  ]
+}
