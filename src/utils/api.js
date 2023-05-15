@@ -1,10 +1,10 @@
 const token = localStorage.getItem("jwt");
 
 // export const baseUrl = "http://localhost:3001";
-// export const baseUrl =
-//   "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react.git";
 export const baseUrl =
-  "https://github.com/EmilyWetterauer/se_project_react.git";
+  "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react.git";
+// export const baseUrl =
+//   "https://github.com/EmilyWetterauer/se_project_react.git";
 
 export const handleServerResponse = (res) => {
   const resp = res.json();
