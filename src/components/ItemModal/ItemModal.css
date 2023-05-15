@@ -51,7 +51,9 @@
   top: 0px;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
-  width: 498px;
+  max-width: 498px;
+  max-height: 554px;
+  background-size: cover;
 }
 
 .itemModal__deleteButton {
