@@ -45,7 +45,6 @@ const App = () => {
       auth
         .checkToken(jwt)
         .then((res) => {
-          // console.log("checkToken res:", res);
           if (res) {
             setCurrentUser(res.data);
             setIsLoggedIn(true);
@@ -112,7 +111,6 @@ const App = () => {
   };
 
   const handleRemoveItem = (card) => {
-    // console.log("card inside handleRemoveItem", card);
     setIsOpen(true);
     removeItem(card.id)
       .then((res) => {
@@ -154,10 +152,6 @@ const App = () => {
     if (location.latitude && location.longitude) {
       getForecastWeather(location, apiKey)
         .then((data) => {
-          console.log(
-            "filterDatafromweatherAPI",
-            filterDataFromWeatherAPI(data)
-          );
           setWeatherData(filterDataFromWeatherAPI(data));
         })
         .catch((err) => console.log(err));
@@ -183,12 +177,10 @@ const App = () => {
   };
 
   const handleEditProfileClick = () => {
-    // console.log("herrreeee edit profile");
     setActiveModal("editProfile");
   };
 
   const handleLikeClick = ({ id, isLiked, user }) => {
-    console.log("id inside handleLikeClick", id);
     const token = localStorage.getItem("jwt");
     !isLiked
       ? api
@@ -258,7 +250,6 @@ const App = () => {
                       return false;
                     })
                     .map((item, index) => {
-                      console.log("itemMap", item);
                       return (
                         <ItemCard
                           name={item.name}

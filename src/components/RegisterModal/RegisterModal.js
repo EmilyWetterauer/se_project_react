@@ -21,6 +21,7 @@ const RegisterModal = ({ onClose, handleRegisterComplete }) => {
       auth
         .register(values)
         .then((res) => {
+          auth.authorize({ email: values.email, password: values.password });
           handleRegisterComplete(res.data);
           history.push("/Profile");
         })

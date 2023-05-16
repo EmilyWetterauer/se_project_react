@@ -1,10 +1,9 @@
-const token = localStorage.getItem("jwt");
-
+const getToken = () => {
+  return localStorage.getItem("jwt");
+};
 // export const baseUrl = "http://localhost:3001";
 export const baseUrl =
   "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react";
-// export const baseUrl =
-//   "https://github.com/EmilyWetterauer/se_project_react.git";
 
 export const handleServerResponse = (res) => {
   const resp = res.json();
@@ -25,7 +24,7 @@ export const addItem = ({ id, name, weather, imageUrl, ownerId }) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${getToken()}`,
     },
     body: JSON.stringify({
       id,
@@ -42,17 +41,17 @@ export const removeItem = (id) => {
     method: "DELETE",
     headers: {
       "content-type": "application/json",
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${getToken()}`,
     },
   }).then(handleServerResponse);
 };
 
 export const addCardLike = ({ id }) => {
-  console.log("id inside addCardLike fetch", id);
+  console.log("getToken() inside addCardLike", getToken());
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "PUT",
     headers: {
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${getToken()}`,
       "Content-Type": "application/json",
     },
   }).then(handleServerResponse);
@@ -62,7 +61,7 @@ export const removeCardLike = ({ id }) => {
   return fetch(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${getToken()}`,
       "Content-Type": "application/json",
     },
   }).then(handleServerResponse);
@@ -73,7 +72,7 @@ export const updateUserProfile = ({ name, avatar }) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
-      authorization: `Bearer ${token}`,
+      authorization: `Bearer ${getToken()}`,
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ name, avatar }),

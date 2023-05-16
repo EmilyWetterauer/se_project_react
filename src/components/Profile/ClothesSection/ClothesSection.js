@@ -4,17 +4,8 @@ import "./ClothesSection.css";
 
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
-const ClothesSection = ({
-  // weatherData,
-  // clothingItems,
-  // weatherType,
-  // onCardClick,
-  children,
-  onButtonClick,
-}) => {
+const ClothesSection = ({ children, onButtonClick }) => {
   const { currentUser } = useContext(CurrentUserContext);
-
-  // console.log("currentUser inside of CLOTHES SECTION", currentUser);
 
   return (
     <section className="clothesSection__container">

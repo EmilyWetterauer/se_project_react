@@ -34,8 +34,7 @@ const EditProfileModal = ({
       .updateUserProfile(values)
       .then((res) => {
         if (res) {
-          setCurrentUser(res.data);
-          handleRegisterComplete();
+          handleRegisterComplete(res.data);
           history.push("/Profile");
         } else {
         }

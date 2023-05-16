@@ -5,7 +5,6 @@ import { useForm } from "../../utils/customHooks";
 // import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
-  // console.log("is item being created here??");
   const { values, handleChange } = useForm({
     name: "",
     image: "",
@@ -16,7 +15,6 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    // console.log("is it getting to submit button");
     onAddItem(values.name, values.image, values.weatherType);
   }
 
