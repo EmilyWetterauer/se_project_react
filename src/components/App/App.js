@@ -172,7 +172,8 @@ const App = () => {
     setActiveModal("register");
   };
 
-  const handleRegisterComplete = () => {
+  const handleRegisterComplete = (userInfo) => {
+    setCurrentUser(userInfo);
     setActiveModal("");
     setIsLoggedIn(true);
   };

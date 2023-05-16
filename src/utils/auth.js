@@ -16,7 +16,7 @@ export const register = ({ email, password, name, avatar }) => {
       if (data.error) {
         throw new Error(data.error);
       }
-
+      return data;
       // console.log(data);
     });
 };

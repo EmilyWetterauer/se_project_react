@@ -6,7 +6,7 @@ import "./RegisterModal.css";
 
 import * as auth from "../../utils/auth";
 
-const RegisterModal = ({ onClose, handleRegisterComplete, login }) => {
+const RegisterModal = ({ onClose, handleRegisterComplete }) => {
   const history = useHistory();
   const [values, setValues] = useState({
     email: "",
@@ -21,7 +21,7 @@ const RegisterModal = ({ onClose, handleRegisterComplete, login }) => {
       auth
         .register(values)
         .then((res) => {
-          handleRegisterComplete();
+          handleRegisterComplete(res.data);
           history.push("/Profile");
         })
         .catch((err) => console.log(err));
