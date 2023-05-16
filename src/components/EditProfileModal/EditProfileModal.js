@@ -13,7 +13,7 @@ const EditProfileModal = ({
   handleCheckToken,
 }) => {
   const history = useHistory();
-  const { currentUser, setCurrentUser } = useContext(CurrentUserContext);
+  const { currentUser = {} } = useContext(CurrentUserContext);
   const { name, avatar } = currentUser;
   const [values, setValues] = useState({
     name,
