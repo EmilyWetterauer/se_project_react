@@ -3,7 +3,7 @@ const getToken = () => {
 };
 // export const baseUrl = "http://localhost:3001";
 export const baseUrl =
-  "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react";
+  "https://my-json-server.typicode.com/EmilyWetterauer/se_project_express";
 
 export const handleServerResponse = (res) => {
   const resp = res.json();
