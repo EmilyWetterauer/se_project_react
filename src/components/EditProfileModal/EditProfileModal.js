@@ -7,6 +7,8 @@ import "./EditProfileModal.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import * as api from "../../utils/api";
 
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
+
 const EditProfileModal = ({
   onClose,
   handleRegisterComplete,
@@ -42,47 +44,53 @@ const EditProfileModal = ({
       .catch((err) => console.log(err));
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="editProfileModal__wrapper" onClick={onClose}>
-        <div className="editProfileModal__container">
-          <div
-            className="editProfileModal__closeButton"
-            onClick={onClose}
-          ></div>
-          <h2 className="editProfileModal__title">Change profile data</h2>
-          <label className="editProfileModal__nameLabel" htmlFor="name">
-            Name
-          </label>
-          <input
-            className="editProfileModal__nameField"
-            type="text"
-            onChange={handleInputChange}
-            placeholder="name"
-            id="name"
-            name="name"
-            value={values.name}
-            required
-          ></input>
-          <label className="editProfileModal__avatarUrlLabel" htmlFor="avatar">
-            Avatar
-          </label>
-          <input
-            className="editProfileModal__avatarUrlField"
-            placeholder="avatarUrl"
-            type="text"
-            name="avatar"
-            value={values.avatar}
-            onChange={handleInputChange}
-            id="avatar"
-            required
-          />
+    <ModalWithForm
+      title="Change profile data"
+      buttonLabel="Save Changes"
+      onClose={onClose}
+      onSubmit={handleSubmit}
+      buttonClass="editProfileModal__saveChangesButton"
+      // containerClass="editProfileModal__container"
+    >
+      {/* <form onSubmit={handleSubmit}> */}
+      {/* <div className="editProfileModal__wrapper" onClick={onClose}> */}
+      <div className="editProfileModal__container">
+        {/* <div className="editProfileModal__closeButton" onClick={onClose}></div> */}
+        {/* <h2 className="editProfileModal__title">Change profile data</h2> */}
+        <label className="editProfileModal__nameLabel" htmlFor="name">
+          Name
+        </label>
+        <input
+          className="editProfileModal__nameField"
+          type="text"
+          onChange={handleInputChange}
+          placeholder="name"
+          id="name"
+          name="name"
+          value={values.name}
+          required
+        ></input>
+        <label className="editProfileModal__avatarUrlLabel" htmlFor="avatar">
+          Avatar
+        </label>
+        <input
+          className="editProfileModal__avatarUrlField"
+          placeholder="avatarUrl"
+          type="text"
+          name="avatar"
+          value={values.avatar}
+          onChange={handleInputChange}
+          id="avatar"
+          required
+        />
 
-          <button className="editProfileModal__saveChangesButton" type="submit">
+        {/* <button className="editProfileModal__saveChangesButton" type="submit">
             Save Changes
-          </button>
-        </div>
+          </button> */}
       </div>
-    </form>
+      {/* </div> */}
+      {/* </form> */}
+    </ModalWithForm>
   );
 };
 

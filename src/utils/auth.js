@@ -1,4 +1,4 @@
-import { baseUrl } from "../utils/api";
+import { baseUrl, handleServerResponse } from "../utils/api";
 
 export const register = ({ email, password, name, avatar }) => {
   return fetch(`${baseUrl}/signup`, {
@@ -8,7 +8,7 @@ export const register = ({ email, password, name, avatar }) => {
     },
     body: JSON.stringify({ email, password, name, avatar }),
   })
-    .then((response) => response.json())
+    .then(handleServerResponse)
     .then((data) => {
       if (data.error) {
         throw new Error(data.error);
@@ -25,7 +25,7 @@ export const authorize = ({ email, password }) => {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then((response) => response.json())
+    .then(handleServerResponse)
     .then((data) => {
       if (data.token) {
         localStorage.setItem("jwt", data.token);
@@ -51,7 +51,7 @@ export const checkToken = (token) => {
       authorization: `Bearer ${token}`,
     },
   })
-    .then((res) => res.json())
+    .then(handleServerResponse)
     .then((data) => {
       return data;
     });

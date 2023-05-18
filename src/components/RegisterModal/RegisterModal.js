@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-import { Link, BrowserRouter, useHistory } from "react-router-dom";
+import { Link, /*BrowserRouter,*/ useHistory } from "react-router-dom";
 
 import "./RegisterModal.css";
 
 import * as auth from "../../utils/auth";
+import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const RegisterModal = ({ onClose, handleRegisterComplete }) => {
   const history = useHistory();
@@ -16,6 +17,7 @@ const RegisterModal = ({ onClose, handleRegisterComplete }) => {
   });
 
   const handleSubmit = (e) => {
+    // console.log("heellooooo");
     e.preventDefault();
     if (values) {
       auth
@@ -36,81 +38,92 @@ const RegisterModal = ({ onClose, handleRegisterComplete }) => {
     setValues({ ...values, [name]: value });
   };
   return (
-    <BrowserRouter>
-      <div className="registerModal__wrapper" onClick={onClose}>
-        <div className="registerModal__container">
-          <div className="registerModal__closeButton" onClick={onClose}></div>
-          <h2 className="registerModal__title">Sign Up</h2>
-          <label className="registerModal__emailLabel" htmlFor="email">
-            Email
-          </label>
-          <input
-            className="registerModal__emailField"
-            placeholder="Email"
-            type="email"
-            id="email"
-            name="email"
-            onChange={handleChange}
-            value={values.email}
-            required
-          />
-          <label className="registerModal__passwordLabel" htmlFor="password">
-            Password
-          </label>
-          <input
-            className="registerModal__passwordField"
-            placeholder="Password"
-            type="password"
-            name="password"
-            id="password"
-            onChange={handleChange}
-            value={values.password}
-          />
+    // <BrowserRouter>
+    // <form onSubmit={handleSubmit}>
+    <ModalWithForm
+      title="Sign Up"
+      buttonLabel="Next"
+      onClose={onClose}
+      onSubmit={handleSubmit}
+      // buttonClass,
+    >
+      <form>
+        {/* <div className="registerModal__wrapper" onClick={onClose}> */}
+        {/* <div className="registerModal__container"> */}
+        {/* <div className="registerModal__closeButton" onClick={onClose}></div> */}
+        {/* <h2 className="registerModal__title">Sign Up</h2> */}
+        <label className="registerModal__emailLabel" htmlFor="email">
+          Email
+        </label>
+        <input
+          className="registerModal__emailField"
+          placeholder="Email"
+          type="email"
+          id="email"
+          name="email"
+          onChange={handleChange}
+          value={values.email}
+          required
+        />
+        <label className="registerModal__passwordLabel" htmlFor="password">
+          Password
+        </label>
+        <input
+          className="registerModal__passwordField"
+          placeholder="Password"
+          type="password"
+          name="password"
+          id="password"
+          onChange={handleChange}
+          value={values.password}
+        />
 
-          <label className="registerModal__nameLabel" htmlFor="email">
-            Name
-          </label>
-          <input
-            className="registerModal__nameField"
-            placeholder="Name"
-            type="text"
-            id="text"
-            name="name"
-            onChange={handleChange}
-            value={values.name}
-            required
-          />
-          <label className="registerModal__avatarUrlLabel" htmlFor="avatar">
-            Avatar URL
-          </label>
-          <input
-            className="registerModal__avatarUrlField"
-            placeholder="Avatar URL"
-            type="url"
-            id="avatar"
-            name="avatar"
-            onChange={handleChange}
-            value={values.avatar}
-          />
+        <label className="registerModal__nameLabel" htmlFor="email">
+          Name
+        </label>
+        <input
+          className="registerModal__nameField"
+          placeholder="Name"
+          type="text"
+          id="text"
+          name="name"
+          onChange={handleChange}
+          value={values.name}
+          required
+        />
+        <label className="registerModal__avatarUrlLabel" htmlFor="avatar">
+          Avatar URL
+        </label>
+        <input
+          className="registerModal__avatarUrlField"
+          placeholder="Avatar URL"
+          type="url"
+          id="avatar"
+          name="avatar"
+          onChange={handleChange}
+          value={values.avatar}
+        />
 
-          <div
-            className="registerModal__nextButton"
-            type="submit"
-            onClick={handleSubmit}
-          >
-            <Link to="/Profile">Next</Link>
-          </div>
+        {/* <button
+        className="registerModal__nextButton"
+        type="submit"
+        // onClick={handleSubmit}
+      >
+        <Link to="/Profile">Next</Link>
+      </button> */}
 
-          <button
-            className="registerModal__loginButton"
-            type="submit"
-            onClick={onClose}
-          >
-            Log In
-          </button>
-        </div>
-      </div>
-    </BrowserRouter>
+        {/* <button
+        className="registerModal__loginButton"
+        type="submit"
+        onClick={onClose}
+      >
+        Log In
+      </button> */}
+        {/* </div> */}
+        {/* </div> */}
+      </form>
+    </ModalWithForm>
+    // </BrowserRouter>
   );
 };
 

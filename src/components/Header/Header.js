@@ -53,11 +53,10 @@ const Header = ({
             </div>
           </Link>
           <div alt="avatar" onClick={handleCheckToken}>
-            {" "}
             <Link to="/Profile">
-              <div className="header__avatar">
+              <div className="header__avatarContainer">
                 {avatar ? (
-                  <img alt="avatar" src={avatar} />
+                  <img className="header__avatar" alt="avatar" src={avatar} />
                 ) : (
                   <div className="header__avatarInitial">{avatarInitial}</div>
                 )}

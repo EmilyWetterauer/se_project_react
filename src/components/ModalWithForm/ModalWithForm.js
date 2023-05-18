@@ -2,7 +2,15 @@ import React from "react";
 import "./ModalWithForm.css";
 import closeButtonWithFormPath from "../../images/closeButtonImageFormModal.png";
 
-function ModalWithForm({ title, buttonLabel, onClose, children, onSubmit }) {
+function ModalWithForm({
+  title,
+  buttonLabel,
+  onClose,
+  children,
+  onSubmit,
+  buttonClass,
+  // containerClass,
+}) {
   React.useEffect(() => {
     document.addEventListener("keydown", onClose);
 
@@ -12,7 +20,10 @@ function ModalWithForm({ title, buttonLabel, onClose, children, onSubmit }) {
   }, [onClose]);
 
   return (
-    <div className="modalWithForm__wrapper" onClick={onClose}>
+    <div
+      className={/*{containerClass || */ "modalWithForm__wrapper"}
+      onClick={onClose}
+    >
       <form className="ModalWithForm" onSubmit={onSubmit}>
         <h2 className="ModalWithForm-heading">{title}</h2>
         <img
@@ -22,7 +33,7 @@ function ModalWithForm({ title, buttonLabel, onClose, children, onSubmit }) {
           alt="close"
         />
         {children}
-        <button className="ModalWithForm-button" type="submit">
+        <button className={buttonClass || "ModalWithForm-button"} type="submit">
           {buttonLabel}
         </button>
       </form>

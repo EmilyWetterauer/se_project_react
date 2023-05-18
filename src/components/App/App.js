@@ -9,7 +9,7 @@ import {
   getForecastWeather,
   filterDataFromWeatherAPI,
 } from "../../utils/weatherApi";
-import { defaultClothingItems } from "../../utils/clothingItems";
+// import { defaultClothingItems } from "../../utils/clothingItems";
 import { location } from "../../utils/constants";
 import { apiKey } from "../../utils/constants";
 
@@ -79,9 +79,9 @@ const App = () => {
     setActiveModal("create");
   };
 
-  const handleAddItemSubmit = (item) => {
-    setClothingItems([item, ...clothingItems]);
-  };
+  // const handleAddItemSubmit = (item) => {
+  //   setClothingItems([item, ...clothingItems]);
+  // };
 
   const closeAllModals = (evt) => {
     if (
@@ -98,12 +98,12 @@ const App = () => {
 
     addItem({ id, name, weather, imageUrl, ownerId: currentUser._id })
       .then((res) => {
-        getItemList()
-          .then((items) => {
-            setClothingItems(items);
-          })
-          .catch((err) => console.log(err));
-        handleAddItemSubmit(res);
+        // getItemList()
+        //   .then((items) => {
+        setClothingItems((prevItems) => [res.data, ...prevItems]);
+        // console.log("setClothingItems in onAddItem", res.data);
+        // .catch((err) => console.log(err));
+        // handleAddItemSubmit(res);
         setActiveModal("");
         setIsOpen(false);
       })
@@ -114,18 +114,20 @@ const App = () => {
     setIsOpen(true);
     removeItem(card.id)
       .then((res) => {
+        // console.log("handleRemoveItem res", res);
         if (res) {
-          getItemList()
-            .then((items) => {
-              setClothingItems(items);
-            })
-            .catch((err) => console.log(err));
+          // getItemList()
+          //   .then((items) => {
+          //     setClothingItems(items);
+          //   })
+          //   .catch((err) => console.log(err));
           setClothingItems((cards) =>
             cards.filter((c) => {
-              return c.id + "" !== card.id;
+              return c._id + "" !== card.id;
             })
           );
           setActiveModal("");
+          setIsOpen(false);
         }
       })
       .catch((err) => console.log(err));
@@ -158,9 +160,10 @@ const App = () => {
     }
   }, []);
 
-  React.useEffect(() => {
-    setClothingItems(defaultClothingItems);
-  }, []);
+  // React.useEffect(() => {
+  // setClothingItems();
+  //   setClothingItems(defaultClothingItems);
+  // }, []);
 
   const handleRegisterClick = () => {
     setActiveModal("register");

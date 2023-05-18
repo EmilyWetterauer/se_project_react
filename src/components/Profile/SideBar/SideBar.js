@@ -22,9 +22,9 @@ const SideBar = ({
   return (
     <div className="sideBar__container">
       <div className="sideBar__avatarNameContainer">
-        <div alt="avatar">
+        <div className="sideBar__avatarContainer" alt="avatar">
           {avatar ? (
-            <div className="header__avatar">
+            <div className="sideBar__avatar">
               <img alt="avatar" src={avatar}></img>
             </div>
           ) : (
