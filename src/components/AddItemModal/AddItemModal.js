@@ -2,7 +2,6 @@ import React from "react";
 import "./AddItemModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../utils/customHooks";
-// import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
   const { values, handleChange } = useForm({
@@ -10,8 +9,6 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
     image: "",
     weatherType: "",
   });
-
-  // const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
 
   function handleSubmit(evt) {
     evt.preventDefault();

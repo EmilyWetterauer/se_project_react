@@ -16,7 +16,6 @@
 }
 
 .addItemModal__nameField {
-  /* position: absolute; */
   top: 110px;
   left: 28px;
   width: 440px;
@@ -39,8 +38,6 @@
 }
 
 .addItemModal__imageUrlField {
-  /* position: absolute; */
-  /* max-width: 100%; */
   top: 158px;
   left: 28px;
   width: 440px;

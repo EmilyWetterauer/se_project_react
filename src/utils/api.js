@@ -68,7 +68,6 @@ export const removeCardLike = ({ id }) => {
 };
 
 export const updateUserProfile = ({ name, avatar }) => {
-  // const response = fetch(`${baseUrl}/users/me`, {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
@@ -77,12 +76,4 @@ export const updateUserProfile = ({ name, avatar }) => {
     },
     body: JSON.stringify({ name, avatar }),
   }).then(handleServerResponse);
-
-  // if (!response.ok) {
-  //   const errorMessage = `Failed to update profile data: ${response.statusText}`;
-  //   throw new Error(errorMessage);
-  // }
-
-  // const updatedUserData = response.json();
-  // return updatedUserData;
 };

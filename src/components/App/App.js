@@ -9,7 +9,6 @@ import {
   getForecastWeather,
   filterDataFromWeatherAPI,
 } from "../../utils/weatherApi";
-// import { defaultClothingItems } from "../../utils/clothingItems";
 import { location } from "../../utils/constants";
 import { apiKey } from "../../utils/constants";
 
@@ -79,10 +78,6 @@ const App = () => {
     setActiveModal("create");
   };
 
-  // const handleAddItemSubmit = (item) => {
-  //   setClothingItems([item, ...clothingItems]);
-  // };
-
   const closeAllModals = (evt) => {
     if (
       evt.key === "Escape" ||
@@ -98,12 +93,7 @@ const App = () => {
 
     addItem({ id, name, weather, imageUrl, ownerId: currentUser._id })
       .then((res) => {
-        // getItemList()
-        //   .then((items) => {
         setClothingItems((prevItems) => [res.data, ...prevItems]);
-        // console.log("setClothingItems in onAddItem", res.data);
-        // .catch((err) => console.log(err));
-        // handleAddItemSubmit(res);
         setActiveModal("");
         setIsOpen(false);
       })
@@ -114,13 +104,7 @@ const App = () => {
     setIsOpen(true);
     removeItem(card.id)
       .then((res) => {
-        // console.log("handleRemoveItem res", res);
         if (res) {
-          // getItemList()
-          //   .then((items) => {
-          //     setClothingItems(items);
-          //   })
-          //   .catch((err) => console.log(err));
           setClothingItems((cards) =>
             cards.filter((c) => {
               return c._id + "" !== card.id;
@@ -159,11 +143,6 @@ const App = () => {
         .catch((err) => console.log(err));
     }
   }, []);
-
-  // React.useEffect(() => {
-  // setClothingItems();
-  //   setClothingItems(defaultClothingItems);
-  // }, []);
 
   const handleRegisterClick = () => {
     setActiveModal("register");

@@ -165,26 +165,3 @@
   font-size: 16px;
   font-weight: 700;
 }
-
-/* .registerModal__image {
-  position: absolute;
-  top: 0px;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  width: 498px;
-} */
-
-/* .registerModal__deleteButton {
-  position: absolute;
-  right: 32px;
-  bottom: 68px;
-  color: #ff4d00;
-  border: none;
-  background-color: #fff;
-  font-size: 20px;
-  font-weight: 700;
-  width: 125px;
-  height: 24px;
-  z-index: 4;
-  font-family: "Montserrat", sans-serif;
-} */
