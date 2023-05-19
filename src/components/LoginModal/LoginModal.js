@@ -75,7 +75,7 @@ const LoginModal = ({ onClose, handleRegisterComplete, handleCheckToken }) => {
 
       <button
         className="loginModal__orRegisterButton"
-        type="submit"
+        type="button"
         onClick={onClose}
       >
         or Register
