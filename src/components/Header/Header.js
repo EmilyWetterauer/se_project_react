@@ -48,9 +48,7 @@ const Header = ({
 
           <Link to="/Profile">
             {" "}
-            <div className="header__name" style={{ textDecoration: "none" }}>
-              {name}
-            </div>
+            <div className="header__name">{name}</div>
           </Link>
           <div alt="avatar" onClick={handleCheckToken}>
             <Link to="/Profile">

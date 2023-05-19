@@ -25,14 +25,14 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
       onClose={onCloseModal}
       onSubmit={handleSubmit}
     >
-      <label htmlFor="clothing-name" className="ModalWithForm-heading">
+      <label htmlFor="clothing-name" className="addItemModal__nameLabel">
         Name
         <input
           type="text"
           value={values.name}
           name="name"
           id="clothing-name"
-          className="ModalWithForm-input modal__input_type_card-name"
+          className="addItemModal__nameField"
           placeholder="Name"
           required
           minLength="1"
@@ -41,22 +41,22 @@ const AddItemModal = ({ isOpen, onAddItem, onCloseModal }) => {
         />
         <span className="modal-error" id="clothing-name-error"></span>
       </label>
-      <label htmlFor="clothing-link" className="ModalWithForm-heading">
+      <label htmlFor="clothing-link" className="addItemModal__imageLabel">
         Image
         <input
           type="url"
           value={values.image}
           name="image"
           id="clothing-link"
-          className="ModalWithForm-input modal__input_type_url"
+          className="addItemModal__imageUrlField"
           placeholder="Image URL"
           required
           onChange={handleChange}
         />
         <span className="modal__error" id="clothing-link-error"></span>
       </label>
-      <p className="modalWithForm__subTitle">Select the weather type:</p>
-      <div className="modal__input modal__input_type_radio">
+      <p className="addItemModal__subTitle">Select the weather type:</p>
+      <div className="addItemModal__radioButtons">
         <div>
           <input
             type="radio"

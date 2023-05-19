@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { Link, /*BrowserRouter,*/ useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import "./RegisterModal.css";
 
@@ -17,7 +17,6 @@ const RegisterModal = ({ onClose, handleRegisterComplete }) => {
   });
 
   const handleSubmit = (e) => {
-    // console.log("heellooooo");
     e.preventDefault();
     if (values) {
       auth
@@ -38,20 +37,14 @@ const RegisterModal = ({ onClose, handleRegisterComplete }) => {
     setValues({ ...values, [name]: value });
   };
   return (
-    // <BrowserRouter>
-    // <form onSubmit={handleSubmit}>
     <ModalWithForm
       title="Sign Up"
       buttonLabel="Next"
       onClose={onClose}
       onSubmit={handleSubmit}
-      // buttonClass,
+      buttonClass={"registerModal__nextButton"}
     >
       <form>
-        {/* <div className="registerModal__wrapper" onClick={onClose}> */}
-        {/* <div className="registerModal__container"> */}
-        {/* <div className="registerModal__closeButton" onClick={onClose}></div> */}
-        {/* <h2 className="registerModal__title">Sign Up</h2> */}
         <label className="registerModal__emailLabel" htmlFor="email">
           Email
         </label>
@@ -104,26 +97,15 @@ const RegisterModal = ({ onClose, handleRegisterComplete }) => {
           value={values.avatar}
         />
 
-        {/* <button
-        className="registerModal__nextButton"
-        type="submit"
-        // onClick={handleSubmit}
-      >
-        <Link to="/Profile">Next</Link>
-      </button> */}
-
-        {/* <button
-        className="registerModal__loginButton"
-        type="submit"
-        onClick={onClose}
-      >
-        Log In
-      </button> */}
-        {/* </div> */}
-        {/* </div> */}
+        <button
+          className="registerModal__loginButton"
+          type="submit"
+          onClick={onClose}
+        >
+          Log In
+        </button>
       </form>
     </ModalWithForm>
-    // </BrowserRouter>
   );
 };
 

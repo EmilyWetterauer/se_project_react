@@ -38,54 +38,48 @@ const LoginModal = ({ onClose, handleRegisterComplete, handleCheckToken }) => {
   };
 
   return (
-    <ModalWithForm title="Login" onClose={onClose} onSubmit={handleSubmit}>
-      {/* <div className="loginModal__wrapper" onClick={onClose}> */}
-      <div className="loginModal__container">
-        {/* <div className="loginModal__closeButton" onClick={onClose}></div> */}
-        {/* <h2 className="loginModal__title">Login</h2> */}
-        <label className="loginModal__emailLabel" htmlFor="email">
-          Email
-        </label>
-        <input
-          className="loginModal__emailField"
-          placeholder="Email"
-          type="email"
-          id="email"
-          name="email"
-          value={values.email}
-          onChange={handleInputChange}
-          required
-        ></input>
-        <label className="loginModal__passwordLabel" htmlFor="password">
-          Password
-        </label>
-        <input
-          className="loginModal__passwordField"
-          placeholder="Password"
-          type="password"
-          name="password"
-          value={values.password}
-          onChange={handleInputChange}
-          id="password"
-        />
+    <ModalWithForm
+      title="Login"
+      onClose={onClose}
+      onSubmit={handleSubmit}
+      containerClass="loginModal__container"
+      buttonLabel={"Login"}
+      buttonClass="loginModal__loginButton"
+    >
+      <label className="loginModal__emailLabel" htmlFor="email">
+        Email
+      </label>
+      <input
+        className="loginModal__emailField"
+        placeholder="Email"
+        type="email"
+        id="email"
+        name="email"
+        value={values.email}
+        onChange={handleInputChange}
+        required
+      ></input>
+      <label className="loginModal__passwordLabel" htmlFor="password">
+        Password
+      </label>
+      <input
+        className="loginModal__passwordField"
+        placeholder="Password"
+        type="password"
+        name="password"
+        value={values.password}
+        onChange={handleInputChange}
+        id="password"
+        required
+      />
 
-        <button
-          className="loginModal__loginButton"
-          type="submit"
-          onClick={handleCheckToken}
-        >
-          Login
-        </button>
-
-        <button
-          className="loginModal__orRegisterButton"
-          type="submit"
-          onClick={onClose}
-        >
-          or Register
-        </button>
-      </div>
-      {/* </div> */}
+      <button
+        className="loginModal__orRegisterButton"
+        type="submit"
+        onClick={onClose}
+      >
+        or Register
+      </button>
     </ModalWithForm>
   );
 };

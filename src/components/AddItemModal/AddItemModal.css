@@ -1,0 +1,63 @@
+.modal__input_type_radio {
+  margin-left: 28px;
+}
+
+.addItemModal__nameLabel {
+  top: 72px;
+  left: 28px;
+  font-family: "Montserrat", sans-serif;
+  position: absolute;
+  color: #000;
+  font-weight: 700;
+  height: 20px;
+  width: 45px;
+  font-size: 16px;
+  z-index: 2;
+}
+
+.addItemModal__nameField {
+  /* position: absolute; */
+  top: 110px;
+  left: 28px;
+  width: 440px;
+  height: 20px;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+
+.addItemModal__imageLabel {
+  top: 148px;
+  left: 28px;
+  font-family: "Montserrat", sans-serif;
+  position: absolute;
+  color: #000;
+  font-weight: 700;
+  height: 20px;
+  width: 45px;
+  font-size: 16px;
+  z-index: 2;
+}
+
+.addItemModal__imageUrlField {
+  /* position: absolute; */
+  /* max-width: 100%; */
+  top: 158px;
+  left: 28px;
+  width: 440px;
+  height: 20px;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+
+.addItemModal__subTitle {
+  position: absolute;
+  font-weight: 700;
+  top: 224px;
+  left: 28px;
+}
+
+.addItemModal__radioButtons {
+  position: absolute;
+  top: 270px;
+  left: 28px;
+}

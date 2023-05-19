@@ -9,7 +9,7 @@ function ModalWithForm({
   children,
   onSubmit,
   buttonClass,
-  // containerClass,
+  containerClass,
 }) {
   React.useEffect(() => {
     document.addEventListener("keydown", onClose);
@@ -20,11 +20,8 @@ function ModalWithForm({
   }, [onClose]);
 
   return (
-    <div
-      className={/*{containerClass || */ "modalWithForm__wrapper"}
-      onClick={onClose}
-    >
-      <form className="ModalWithForm" onSubmit={onSubmit}>
+    <div className={"modalWithForm__wrapper"} onClick={onClose}>
+      <form className={containerClass || "ModalWithForm"} onSubmit={onSubmit}>
         <h2 className="ModalWithForm-heading">{title}</h2>
         <img
           className="ModalWithForm-close"

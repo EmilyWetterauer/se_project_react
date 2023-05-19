@@ -18,6 +18,7 @@
   width: 498px;
   background-color: #fff;
   border-radius: 16px;
+  overflow: hidden;
 }
 
 .itemModal__closeButton {
@@ -54,6 +55,8 @@
   max-width: 498px;
   max-height: 554px;
   background-size: cover;
+  max-width: 100%;
+  display: block;
 }
 
 .itemModal__deleteButton {
