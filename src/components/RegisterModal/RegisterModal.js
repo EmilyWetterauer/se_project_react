@@ -89,7 +89,7 @@ const RegisterModal = ({ onClose, handleRegisterComplete }) => {
       <input
         className="registerModal__avatarUrlField"
         placeholder="Avatar URL"
-        type="url"
+        type="text"
         id="avatar"
         name="avatar"
         onChange={handleChange}
