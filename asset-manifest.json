@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/se_project_react/static/css/main.0642f420.css",
-    "main.js": "/se_project_react/static/js/main.757a4a34.js",
+    "main.css": "/se_project_react/static/css/main.fccafe44.css",
+    "main.js": "/se_project_react/static/js/main.bf0c56d7.js",
     "static/js/787.79f92504.chunk.js": "/se_project_react/static/js/787.79f92504.chunk.js",
     "static/media/daySnow.jpg": "/se_project_react/static/media/daySnow.610abe1a06ffa45fede2.jpg",
     "static/media/heart.svg": "/se_project_react/static/media/heart.49570bcb1d637fdb38e5.svg",
     "index.html": "/se_project_react/index.html",
-    "main.0642f420.css.map": "/se_project_react/static/css/main.0642f420.css.map",
-    "main.757a4a34.js.map": "/se_project_react/static/js/main.757a4a34.js.map",
+    "main.fccafe44.css.map": "/se_project_react/static/css/main.fccafe44.css.map",
+    "main.bf0c56d7.js.map": "/se_project_react/static/js/main.bf0c56d7.js.map",
     "787.79f92504.chunk.js.map": "/se_project_react/static/js/787.79f92504.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0642f420.css",
-    "static/js/main.757a4a34.js"
+    "static/css/main.fccafe44.css",
+    "static/js/main.bf0c56d7.js"
   ]
 }
