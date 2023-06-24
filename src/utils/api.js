@@ -1,7 +1,13 @@
 const getToken = () => {
   return localStorage.getItem("jwt");
 };
-export const baseUrl = "http://localhost:3001";
+
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "http://api.wtwr.hackquest.com"
+    : "http://localhost:3001";
+
+// export const baseUrl = "http://localhost:3001";
 // export const baseUrl =
 //   "https://my-json-server.typicode.com/EmilyWetterauer/se_project_react";
 
