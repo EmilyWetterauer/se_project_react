@@ -4,8 +4,8 @@ const getToken = () => {
 
 export const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "http://api.wtwr.hackquest.com"
-    : "http://localhost:3001";
+    ? "https://api.wtwr.hackquest.com"
+    : "https://localhost:3001";
 
 // export const baseUrl = "http://localhost:3001";
 // export const baseUrl =
