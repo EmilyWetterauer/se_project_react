@@ -25,7 +25,7 @@ export const getItemList = () => {
   }).then(handleServerResponse);
 };
 
-export const addItem = ({ id, name, weather, imageUrl, ownerId }) => {
+export const addItem = ({ id, name, weather, imageUrl }) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -37,7 +37,6 @@ export const addItem = ({ id, name, weather, imageUrl, ownerId }) => {
       name,
       weather,
       imageUrl,
-      ownerId,
     }),
   }).then(handleServerResponse);
 };

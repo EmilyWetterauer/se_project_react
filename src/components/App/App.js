@@ -91,7 +91,7 @@ const App = () => {
     setIsOpen(true);
     // const id = clothingItems.length;
 
-    addItem({ /*id,*/ name, weather, imageUrl, ownerId: currentUser._id })
+    addItem({ /*id,*/ name, weather, imageUrl })
       .then((res) => {
         setClothingItems((prevItems) => [res.data, ...prevItems]);
         setActiveModal("");
